@@ -1,17 +1,10 @@
-BI,Białystok
-BS,Suwałki
-BL,Łomża
-BAU,powiat augustowski
-BIA,powiat białostocki
-BBI,powiat bielski
-BGR,powiat grajewski
-BHA,powiat hajnowski
-BKL,powiat kolneński
-BMN,powiat moniecki
-BSE,powiat sejneński
-BSI,powiat siemiatycki
-BSK,powiat sokólski
-BSU,powiat suwalski
-BWM,powiat wysokomazowiecki
-BZA,powiat zambrowski
-BLM,powiat łomżyński
+//spisane z fb od 6.04 7:55 do 30.03 16:49
+TOS 54036,BMW 330i GT Starachowickiej Drogówki
+TKI 2034A,BMW 330i Koneckiej Drogówki 
+KN 82046,BMW 330i Drogówki z Nowego Sącza
+KR 8AA15,BMW 330i GT Drogówki z Krakowa
+KNT 54891,BMW 330i Drogówki z Myślenic
+KNT 00398,BMW 330i Drogówki z Nowego Targu
+KR 4W268,BMW 330i Drogówki z Krakowa
+KOS 80135,Opel Vectra fl Drogówki z Oświęcimia
+FWS 91SJ,BMW 330i Drogówki z Nowej Soli
