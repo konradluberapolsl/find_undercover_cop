@@ -33,7 +33,7 @@ def segregate():
                         os.system(tmp2)
 
 menu()
-
+input()
 
 
 
