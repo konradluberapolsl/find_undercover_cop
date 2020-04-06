@@ -1,0 +1,17 @@
+BI,Białystok
+BS,Suwałki
+BL,Łomża
+BAU,powiat augustowski
+BIA,powiat białostocki
+BBI,powiat bielski
+BGR,powiat grajewski
+BHA,powiat hajnowski
+BKL,powiat kolneński
+BMN,powiat moniecki
+BSE,powiat sejneński
+BSI,powiat siemiatycki
+BSK,powiat sokólski
+BSU,powiat suwalski
+BWM,powiat wysokomazowiecki
+BZA,powiat zambrowski
+BLM,powiat łomżyński

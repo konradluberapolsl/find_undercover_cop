@@ -1,0 +1,403 @@
+BI,podlaskie,Białystok
+BS,podlaskie,Suwałki
+BL,podlaskie,Łomża
+BAU,podlaskie,powiat augustowski
+BIA,podlaskie,powiat białostocki
+BBI,podlaskie,powiat bielski
+BGR,podlaskie,powiat grajewski
+BHA,podlaskie,powiat hajnowski
+BKL,podlaskie,powiat kolneński
+BMN,podlaskie,powiat moniecki
+BSE,podlaskie,powiat sejneński
+BSI,podlaskie,powiat siemiatycki
+BSK,podlaskie,powiat sokólski
+BSU,podlaskie,powiat suwalski
+BWM,podlaskie,powiat wysokomazowiecki
+BZA,podlaskie,powiat zambrowski
+BLM,podlaskie,powiat łomżyński
+CB,kujawsko-pomorskie,Bydgoszcz
+CG,kujawsko-pomorskie,Grudziądz
+CT,kujawsko-pomorskie,Toruń
+CW,kujawsko-pomorskie,Włocławek
+CAL,kujawsko-pomorskie,powiat aleksandrowski
+CBR,kujawsko-pomorskie,powiat brodnicki
+CBY,kujawsko-pomorskie,powiat bydgoski
+CCH,kujawsko-pomorskie,powiat chełmiński
+CGD,kujawsko-pomorskie,powiat golubsko-dobrzyński
+CGR,kujawsko-pomorskie,powiat grudziądzki
+CIN,kujawsko-pomorskie,powiat inowrocławski
+CLI,kujawsko-pomorskie,powiat lipnowski
+CMG,kujawsko-pomorskie,powiat mogileński
+CNA,kujawsko-pomorskie,powiat nakielski
+CRA,kujawsko-pomorskie,powiat radziejowski
+CRY,kujawsko-pomorskie,powiat rypiński
+CSE,kujawsko-pomorskie,powiat sępoleński
+CSW,kujawsko-pomorskie,powiat świecki
+CTR,kujawsko-pomorskie,powiat toruński
+CTU,kujawsko-pomorskie,powiat tucholski
+CWA,kujawsko-pomorskie,powiat wąbrzeski
+CWL,kujawsko-pomorskie,powiat włocławski
+CZN,kujawsko-pomorskie,powiat żniński
+DJ,dolnośląskie,Jelenia Góra
+DL,dolnośląskie,Legnica
+DB,dolnośląskie,Wałbrzych
+DW,dolnośląskie,Wrocław
+DBL,dolnośląskie,powiat bolesławiecki
+DDZ,dolnośląskie,powiat dzierżoniowski
+DGR,dolnośląskie,powiat górowski
+DGL,dolnośląskie,powiat głogowski
+DJA,dolnośląskie,powiat jaworski
+DJE,dolnośląskie,powiat jeleniogórski
+DKA,dolnośląskie,powiat kamiennogórski
+DKL,dolnośląskie,powiat kłodzki
+DLE,dolnośląskie,powiat legnicki
+DLB,dolnośląskie,powiat lubański
+DLU,dolnośląskie,powiat lubiński
+DLW,dolnośląskie,powiat lwówecki
+DMI,dolnośląskie,powiat milicki
+DOL,dolnośląskie,powiat oleśnicki
+DOA,dolnośląskie,powiat oławski
+DPL,dolnośląskie,powiat polkowicki
+DSR,dolnośląskie,powiat średzki
+DST,dolnośląskie,powiat strzeliński
+DSW,dolnośląskie,powiat świdnicki
+DTR,dolnośląskie,powiat trzebnicki
+DBA,dolnośląskie,powiat wałbrzyski
+DWL,dolnośląskie,powiat wołowski
+DWR,dolnośląskie,powiat wrocławski
+DZA,dolnośląskie,powiat ząbkowicki
+DZG,dolnośląskie,powiat zgorzelecki
+DZL,dolnośląskie,powiat złotoryjski
+EP,łódzkie,Piotrków Trybunalski
+ES,łódzkie,Skierniewice
+EL,łódzkie,Łódź
+EBE,łódzkie,powiat bełchatowski
+EBR,łódzkie,powiat brzeziński
+EKU,łódzkie,powiat kutnowski
+EOP,łódzkie,powiat opoczyński
+EPA,łódzkie,powiat pabianicki
+EPJ,łódzkie,powiat pajęczański
+EPI,łódzkie,powiat piotrkowski
+EPD,łódzkie,powiat poddębicki
+ERA,łódzkie,powiat radomszczański
+ERW,łódzkie,powiat rawski
+ESI,łódzkie,powiat sieradzki
+ESK,łódzkie,powiat skierniewicki
+ETM,łódzkie,powiat tomaszowski
+EWI,łódzkie,powiat wieluński
+EWE,łódzkie,powiat wieruszowski
+EZD,łódzkie,powiat zduńskowolski
+EZG,łódzkie,powiat zgierski
+ELA,łódzkie,powiat łaski
+ELE,łódzkie,powiat łęczycki
+ELW,łódzkie,powiat łódzki wschodni
+ELC,łódzkie,powiat łowicki
+FG,lubuskie,Gorzów Wielkopolski
+FZ,lubuskie,Zielona Góra
+FGW,lubuskie,powiat gorzowski
+FKR,lubuskie,powiat krośnieński
+FMI,lubuskie,powiat międzyrzecki
+FNW,lubuskie,powiat nowosolski
+FSD,lubuskie,powiat strzelecko-drezdenecki
+FSU,lubuskie,powiat sulęciński
+FSW,lubuskie,powiat świebodziński
+FSL,lubuskie,powiat słubicki
+FWS,lubuskie,powiat wschowski
+FZG,lubuskie,powiat żagański
+FZA,lubuskie,powiat żarski
+FZI,lubuskie,powiat zielonogórski
+GD,pomorskie,Gdańsk
+GA,pomorskie,Gdynia
+GSP,pomorskie,Sopot
+GS,pomorskie,Słupsk
+GBY,pomorskie,powiat bytowski
+GCH,pomorskie,powiat chojnicki
+GCZ,pomorskie,powiat człuchowski
+GDA,pomorskie,powiat gdański
+GKA,pomorskie,powiat kartuski
+GKS,pomorskie,powiat kościerski
+GKW,pomorskie,powiat kwidzyński
+GLE,pomorskie,powiat lęborski
+GMB,pomorskie,powiat malborski
+GND,pomorskie,powiat nowodworski
+GPU,pomorskie,powiat pucki
+GST,pomorskie,powiat starogardzki
+GSZ,pomorskie,powiat sztumski
+GSL,pomorskie,powiat słupski
+GTC,pomorskie,powiat tczewski
+GWE,pomorskie,powiat wejherowski
+GWO,pomorskie,powiat wejherowski
+KR,małopolskie,Kraków
+KK,małopolskie,Kraków
+KN,małopolskie,Nowy Sącz
+KT,małopolskie,Tarnów
+KBC,małopolskie,powiat bocheński
+KBA,małopolskie,powiat bocheński
+KBR,małopolskie,powiat brzeski
+KCH,małopolskie,powiat chrzanowski
+KDA,małopolskie,powiat dąbrowski
+KGR,małopolskie,powiat gorlicki
+KRA,małopolskie,powiat krakowski
+KLI,małopolskie,powiat limanowski
+KMI,małopolskie,powiat miechowski
+KMY,małopolskie,powiat myślenicki
+KNS,małopolskie,powiat nowosądecki
+KNT,małopolskie,powiat nowotarski
+KOL,małopolskie,powiat olkuski
+KOS,małopolskie,powiat oświęcimski
+KPR,małopolskie,powiat proszowicki
+KSU,małopolskie,powiat suski
+KTA,małopolskie,powiat tarnowski
+KTT,małopolskie,powiat tatrzański
+KWA,małopolskie,powiat wadowicki
+KWI,małopolskie,powiat wielicki
+LB,lubelskie,Biała Podlaska
+LC,lubelskie,Chełm
+LU,lubelskie,Lublin
+LZ,lubelskie,Zamość
+LBI,lubelskie,powiat bialski
+LBL,lubelskie,powiat biłgorajski
+LCH,lubelskie,powiat chełmski
+LHR,lubelskie,powiat hrubieszowski
+LJA,lubelskie,powiat janowski
+LKR,lubelskie,powiat kraśnicki
+LKS,lubelskie,powiat krasnostawski
+LLB,lubelskie,powiat lubartowski
+LUB,lubelskie,powiat lubelski
+LOP,lubelskie,powiat opolski
+LPA,lubelskie,powiat parczewski
+LPU,lubelskie,powiat puławski
+LRA,lubelskie,powiat radzyński
+LRY,lubelskie,powiat rycki
+LSW,lubelskie,powiat świdnicki
+LTM,lubelskie,powiat tomaszowski
+LWL,lubelskie,powiat włodawski
+LZA,lubelskie,powiat zamojski
+LLE,lubelskie,powiat łęczyński
+LLU,lubelskie,powiat łukowski
+NE,warmińsko-mazurskie,Elbląg
+NO,warmińsko-mazurskie,Olsztyn
+NBA,warmińsko-mazurskie,powiat bartoszycki
+NBR,warmińsko-mazurskie,powiat braniewski
+NDZ,warmińsko-mazurskie,powiat działdowski
+NEB,warmińsko-mazurskie,powiat elbląski
+NEL,warmińsko-mazurskie,powiat ełcki
+NGI,warmińsko-mazurskie,powiat giżycki
+NGO,warmińsko-mazurskie,powiat gołdapski
+NIL,warmińsko-mazurskie,powiat iławski
+NKE,warmińsko-mazurskie,powiat kętrzyński
+NLI,warmińsko-mazurskie,powiat lidzbarski
+NMR,warmińsko-mazurskie,powiat mrągowski
+NNI,warmińsko-mazurskie,powiat nidzicki
+NNM,warmińsko-mazurskie,powiat nowomiejski
+NOE,warmińsko-mazurskie,powiat olecki
+NOL,warmińsko-mazurskie,powiat olsztyński
+NOS,warmińsko-mazurskie,powiat ostródzki
+NPI,warmińsko-mazurskie,powiat piski
+NSZ,warmińsko-mazurskie,powiat szczycieński
+NWE,warmińsko-mazurskie,powiat węgorzewski
+OP,opolskie,Opole
+OB,opolskie,powiat brzeski
+OGL,opolskie,powiat głubczycki
+OK,opolskie,powiat kędzierzyńsko-kozielski
+OKL,opolskie,powiat kluczborski
+OKR,opolskie,powiat krapkowicki
+ONA,opolskie,powiat namysłowski
+ONY,opolskie,powiat nyski
+OOL,opolskie,powiat oleski
+OPO,opolskie,powiat opolski
+OPR,opolskie,powiat prudnicki
+OST,opolskie,powiat strzelecki
+PK,wielkopolskie,Kalisz
+PN,wielkopolskie,Konin
+PL,wielkopolskie,Leszno
+PO,wielkopolskie,Poznań
+PY,wielkopolskie,Poznań
+PCH,wielkopolskie,powiat chodzieski
+PCT,wielkopolskie,powiat czarnkowsko-trzcianecki
+PGN,wielkopolskie,powiat gnieźnieński
+PGS,wielkopolskie,powiat gostyński
+PGO,wielkopolskie,powiat grodziski
+PJA,wielkopolskie,powiat jarociński
+PKA,wielkopolskie,powiat kaliski
+PKE,wielkopolskie,powiat kępiński
+PKL,wielkopolskie,powiat kolski
+PKN,wielkopolskie,powiat koniński
+PKS,wielkopolskie,powiat kościański
+PKR,wielkopolskie,powiat krotoszyński
+PLE,wielkopolskie,powiat leszczyński
+PMI,wielkopolskie,powiat międzychodzki
+PNT,wielkopolskie,powiat nowotomyski
+POB,wielkopolskie,powiat obornicki
+POS,wielkopolskie,powiat ostrowski
+POT,wielkopolskie,powiat ostrzeszowski
+PP,wielkopolskie,powiat pilski
+PPL,wielkopolskie,powiat pleszewski
+PZ,wielkopolskie,powiat poznański
+PRA,wielkopolskie,powiat rawicki
+PSR,wielkopolskie,powiat średzki
+PSE,wielkopolskie,powiat śremski
+PSZ,wielkopolskie,powiat szamotulski
+PSL,wielkopolskie,powiat słupecki
+PTU,wielkopolskie,powiat turecki
+PWA,wielkopolskie,powiat wągrowiecki
+PWL,wielkopolskie,powiat wolsztyński
+PWR,wielkopolskie,powiat wrzesiński
+PZL,wielkopolskie,powiat złotowski
+RK,podkarpackie,Krosno
+RP,podkarpackie,Przemyśl
+RZ,podkarpackie,Rzeszów
+RT,podkarpackie,Tarnobrzeg
+RBI,podkarpackie,powiat bieszczadzki
+RBR,podkarpackie,powiat brzozowski
+RDE,podkarpackie,powiat dębicki
+RJA,podkarpackie,powiat jarosławski
+RJS,podkarpackie,powiat jasielski
+RKL,podkarpackie,powiat kolbuszowski
+RKR,podkarpackie,powiat krośnieński
+RLS,podkarpackie,powiat leski
+RLE,podkarpackie,powiat leżajski
+RLU,podkarpackie,powiat lubaczowski
+RMI,podkarpackie,powiat mielecki
+RNI,podkarpackie,powiat niżański
+RPR,podkarpackie,powiat przemyski
+RPZ,podkarpackie,powiat przeworski
+RRS,podkarpackie,powiat ropczycko-sędziszowski
+RZE,podkarpackie,powiat rzeszowski
+RSA,podkarpackie,powiat sanocki
+RST,podkarpackie,powiat stalowowolski
+RSR,podkarpackie,powiat strzyżowski
+RTA,podkarpackie,powiat tarnobrzeski
+RLA,podkarpackie,powiat łańcucki
+SB,śląskie,Bielsko-Biała
+SY,śląskie,Bytom
+SH,śląskie,Chorzów
+SC,śląskie,Częstochowa
+SD,śląskie,Dąbrowa Górnicza
+SG,śląskie,Gliwice
+SJZ,śląskie,Jastrzębie-Zdrój
+SJ,śląskie,Jaworzno
+SK,śląskie,Katowice
+SM,śląskie,Mysłowice
+SPI,śląskie,Piekary Śląskie
+SL,śląskie,Ruda Śląska
+SR,śląskie,Rybnik
+SI,śląskie,Siemianowice Śląskie
+SO,śląskie,Sosnowiec
+SW,śląskie,Świętochłowice
+ST,śląskie,Tychy
+SZ,śląskie,Zabrze
+SZO,śląskie,Żory
+SBE,śląskie,powiat będziński
+SBI,śląskie,powiat bielski
+SBL,śląskie,powiat bieruńsko-lędziński
+SCI,śląskie,powiat cieszyński
+SCZ,śląskie,powiat częstochowski
+SGL,śląskie,powiat gliwicki
+SKL,śląskie,powiat kłobucki
+SLU,śląskie,powiat lubliniecki
+SMI,śląskie,powiat mikołowski
+SMY,śląskie,powiat myszkowski
+SPS,śląskie,powiat pszczyński
+SRC,śląskie,powiat raciborski
+SRB,śląskie,powiat rybnicki
+STA,śląskie,powiat tarnogórski
+SWD,śląskie,powiat wodzisławski
+SWZ,śląskie,powiat wodzisławski
+SZA,śląskie,powiat zawierciański
+SZY,śląskie,powiat żywiecki
+TK,świętokrzyskie,Kielce
+TBU,świętokrzyskie,powiat buski
+TJE,świętokrzyskie,powiat jędrzejowski
+TKA,świętokrzyskie,powiat kazimierski
+TKI,świętokrzyskie,powiat kielecki
+TKN,świętokrzyskie,powiat konecki
+TOP,świętokrzyskie,powiat opatowski
+TOS,świętokrzyskie,powiat ostrowiecki
+TPI,świętokrzyskie,powiat pińczowski
+TSA,świętokrzyskie,powiat sandomierski
+TSK,świętokrzyskie,powiat skarżyski
+TST,świętokrzyskie,powiat starachowicki
+TSZ,świętokrzyskie,powiat staszowski
+TLW,świętokrzyskie,powiat włoszczowski
+WO,mazowieckie,Ostrołęka
+WP,mazowieckie,Płock
+WR,mazowieckie,Radom
+WS,mazowieckie,Siedlce
+WB,mazowieckie,Warszawa Bemowo
+WA,mazowieckie,Warszawa Białołęka
+WD,mazowieckie,Warszawa Bielany
+WE,mazowieckie,Warszawa Mokotów
+WU,mazowieckie,Warszawa Ochota
+WH,mazowieckie,Warszawa Praga Północ
+WF,mazowieckie,Warszawa Praga Południe
+WW,mazowieckie,Warszawa Rembertów, Wilanów, Włochy
+WI,mazowieckie,Warszawa Śródmieście
+WJ,mazowieckie,Warszawa Targówek
+WK,mazowieckie,Warszawa Ursus
+WN,mazowieckie,Warszawa Ursynów
+WT,mazowieckie,Warszawa Wawer
+WX,mazowieckie,Warszawa Wesoła, Żoliborz
+WY,mazowieckie,Warszawa Wola
+WBR,mazowieckie,powiat białobrzeski
+WCI,mazowieckie,powiat ciechanowski
+WG,mazowieckie,powiat garwoliński
+WGS,mazowieckie,powiat gostyniński
+WGM,mazowieckie,powiat grodziski
+WGR,mazowieckie,powiat grójecki
+WKZ,mazowieckie,powiat kozienicki
+WL,mazowieckie,powiat legionowski
+WLI,mazowieckie,powiat lipski
+WMA,mazowieckie,powiat makowski
+WM,mazowieckie,powiat miński
+WML,mazowieckie,powiat mławski
+WND,mazowieckie,powiat nowodworski
+WOR,mazowieckie,powiat ostrowski
+WOS,mazowieckie,powiat ostrołęcki
+WOT,mazowieckie,powiat otwocki
+WPI,mazowieckie,powiat piaseczyński
+WPR,mazowieckie,powiat pruszkowski
+WPP,mazowieckie,powiat pruszkowski
+WPS,mazowieckie,powiat pruszkowski
+WPZ,mazowieckie,powiat przasnyski
+WPY,mazowieckie,powiat przysuski
+WPU,mazowieckie,powiat pułtuski
+WPL,mazowieckie,powiat płocki
+WPN,mazowieckie,powiat płoński
+WRA,mazowieckie,powiat radomski
+WSI,mazowieckie,powiat siedlecki
+WSE,mazowieckie,powiat sierpecki
+WSC,mazowieckie,powiat sochaczewski
+WSK,mazowieckie,powiat sokołowski
+WSZ,mazowieckie,powiat szydłowiecki
+WZ,mazowieckie,powiat warszawski zachodni
+WWE,mazowieckie,powiat węgrowski
+WWL,mazowieckie,powiat wołomiński
+WV,mazowieckie,powiat wołomiński
+WWY,mazowieckie,powiat wyszkowski
+WZU,mazowieckie,powiat żuromiński
+WZW,mazowieckie,powiat zwoleński
+WZY,mazowieckie,powiat żyrardowski
+WLS,mazowieckie,powiat łosicki
+ZK,zachodniopomorskie,Koszalin
+ZSW,zachodniopomorskie,Świnoujście
+ZS,zachodniopomorskie,Szczecin
+ZZ,zachodniopomorskie,Szczecin
+ZBI,zachodniopomorskie,powiat białogardzki
+ZCH,zachodniopomorskie,powiat choszczeński
+ZDR,zachodniopomorskie,powiat drawski
+ZGL,zachodniopomorskie,powiat goleniowski
+ZGY,zachodniopomorskie,powiat gryficki
+ZGR,zachodniopomorskie,powiat gryfiński
+ZKA,zachodniopomorskie,powiat kamieński
+ZKO,zachodniopomorskie,powiat koszaliński
+ZKL,zachodniopomorskie,powiat kołobrzeski
+ZMY,zachodniopomorskie,powiat myśliborski
+ZPL,zachodniopomorskie,powiat policki
+ZPY,zachodniopomorskie,powiat pyrzycki
+ZST,zachodniopomorskie,powiat stargardzki
+ZSD,zachodniopomorskie,powiat świdwiński
+ZSZ,zachodniopomorskie,powiat szczecinecki
+ZSL,zachodniopomorskie,powiat sławieński
+ZWA,zachodniopomorskie,powiat wałecki
+ZLO,zachodniopomorskie,powiat łobeski
