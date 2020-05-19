@@ -5,8 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:find_undercover_cop"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" 
+        Height="450" 
+        Width="800">
+    <Border>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Buttons-->
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Background="DarkSlateGray">
+                <Button Content="clear" Margin="10" Padding="10 5" Click="buttonClear_Click"/>
+                <Button Content="temp" Margin="10" Padding="10 5" Click="buttonTemp_Click"/>
+            </StackPanel>
+
+
+            <!-- Drop files here-->
+            <Border BorderBrush="Black" Grid.Row="1" BorderThickness="3" Margin="50" Name="DDplace" Drop="DDplace_Drop" AllowDrop="true">
+                <TextBlock Text="drop files here" TextAlignment="Center" />
+            </Border>
+
+            <!-- ListBox z plikami-->
+            <ListBox x:Name="listFiles" Grid.Row="2"/>
+        </Grid>
+    </Border>
 </Window>

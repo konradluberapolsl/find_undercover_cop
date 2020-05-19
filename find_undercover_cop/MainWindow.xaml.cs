@@ -1,28 +1,51 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace find_undercover_cop
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow: Window
     {
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        //wstępne ogarnięcie drag and dropa
+
+        private void DDplace_Drop(object sender, DragEventArgs e)
+        {
+            string[] droppedFiles = null;
+
+
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                droppedFiles = e.Data.GetData(DataFormats.FileDrop, true) as string[];
+            }
+
+            if ((droppedFiles == null) || (!droppedFiles.Any()))
+            {
+                return;
+            }
+
+            foreach (string s in droppedFiles)
+            {
+                listFiles.Items.Add(s);
+            }
+
+        }
+
+        private void buttonClear_Click(object sender, RoutedEventArgs e)
+        {
+            listFiles.Items.Clear();
+        }
+
+        private void buttonTemp_Click(object sender, RoutedEventArgs e)
+        {
+            string newPath = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\database\list_of_markings.txt"));
+            string[] test = File.ReadAllLines(newPath);
+            MessageBox.Show(test[0]);
         }
     }
 }
