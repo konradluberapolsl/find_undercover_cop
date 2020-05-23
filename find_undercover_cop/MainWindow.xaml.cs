@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -29,6 +30,9 @@ namespace find_undercover_cop
                 return;
             }
 
+            //tylko jeden element
+            listFiles.Items.Clear();
+
             foreach (string s in droppedFiles)
             {
                 listFiles.Items.Add(s);
@@ -43,9 +47,17 @@ namespace find_undercover_cop
 
         private void buttonTemp_Click(object sender, RoutedEventArgs e)
         {
-            string newPath = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\database\list_of_markings.txt"));
-            string[] test = File.ReadAllLines(newPath);
-            MessageBox.Show(test[0]);
+
+        }
+
+        private void addFiles_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                listFiles.Items.Clear();
+                listFiles.Items.Add(openFileDialog.FileName);
+            }
         }
     }
 }

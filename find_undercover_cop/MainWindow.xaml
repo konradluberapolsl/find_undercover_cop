@@ -11,25 +11,33 @@
     <Border>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="auto" />
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="7*" />
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
 
             <!-- Buttons-->
-            <StackPanel Orientation="Horizontal" Grid.Row="0" Background="DarkSlateGray">
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Background="DarkSlateGray" Grid.ColumnSpan="2">
                 <Button Content="clear" Margin="10" Padding="10 5" Click="buttonClear_Click"/>
                 <Button Content="temp" Margin="10" Padding="10 5" Click="buttonTemp_Click"/>
             </StackPanel>
 
 
             <!-- Drop files here-->
-            <Border BorderBrush="Black" Grid.Row="1" BorderThickness="3" Margin="50" Name="DDplace" Drop="DDplace_Drop" AllowDrop="true">
-                <TextBlock Text="drop files here" TextAlignment="Center" />
+            <Border BorderBrush="Black" Grid.Row="1" BorderThickness="3" Margin="50 50 50 150" Name="DDplace" Drop="DDplace_Drop" AllowDrop="true">
+                <TextBlock Text="drop file" TextAlignment="Center" />
             </Border>
+            <Button x:Name="addFiles"
+                    Click="addFiles_Click"
+                    Content="or click here"
+                    Grid.Row="1" 
+                    Margin="50 250 50 90"/>
 
             <!-- ListBox z plikami-->
-            <ListBox x:Name="listFiles" Grid.Row="2"/>
+            <ListBox x:Name="listFiles" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Height="auto" VerticalAlignment="Bottom"/>
         </Grid>
     </Border>
 </Window>
