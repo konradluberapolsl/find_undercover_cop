@@ -4,85 +4,113 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:find_undercover_cop"
+        xmlns:vm="clr-namespace:find_undercover_cop.ViewModel"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-        Title="MainWindow" 
+        Title="Find Undercover Cop" 
         Height="450" 
-        Width="800">
-    <Border>
+        Width="800"
+        FontFamily="Lato"
+        FontSize="15"
+        ResizeMode="NoResize">
+
+    <Window.Resources>
+        <vm:MainViewModel x:Key="mainVM"/>
+    </Window.Resources>
+
+    <Border DataContext="{StaticResource mainVM}" Background="#424242">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="9*" />
+                <RowDefinition Height="8*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
 
-            <!-- Buttons-->
+            <!-- Top panel-->
             <StackPanel Orientation="Horizontal" 
-                        Grid.Row="0" 
-                        Background="DarkSlateGray" 
-                        Grid.ColumnSpan="2">
-
-
+                        Grid.Row="0" Grid.ColumnSpan="2"
+                        Background="#004242">
+                <TextBlock Text="Find Undercover Cop "
+                           Foreground="White"
+                           FontSize="30"
+                           FontFamily="MV Boli"
+                           Margin="25 0"/>
             </StackPanel>
 
 
-            <!-- Drop files here or click here-->
-            <Border BorderBrush="Black" 
+            <!-- LEFT SIDE -->
+            <Border BorderBrush="#323131" 
                     Grid.Row="1" 
                     BorderThickness="3" 
-                    Margin="20 25 20 130" 
+                    Margin="20 32 20 130" 
                     Name="DDplace" 
                     Drop="DDplace_Drop" 
-                    AllowDrop="true">
-                <TextBlock Text="drop file" 
+                    AllowDrop="true"
+                    Background="#676767"
+                    >
+                <TextBlock Text="drop file here" 
+                           Foreground="#323131"
                            TextAlignment="Center" />
             </Border>
             <Button x:Name="addFiles"
                     Click="addFiles_Click"
                     Content="or click here"
                     Grid.Row="1" 
-                    Margin="20 265 20 60"/>
-            <!-- TextBox -->
+                    Margin="20 245 20 80"
+                    Style="{StaticResource ButtonStyle}"/>
+
+            <!-- RIGHT SIDE -->
             <StackPanel Grid.Row="1" 
-                        Grid.Column="1">
-                <Label Content="Path"/>
+                        Grid.Column="1"
+                        Margin="0 5 0 0">
+                <Label Content="Path"
+                       Foreground="white"/>
                 <TextBox x:Name="TextBoxPath" 
-                         IsEnabled="False" 
+                         IsEnabled="False"
                          Margin="5 0"/>
                 <Button Content="clear file"
-                        Margin="5"
-                        Click="buttonClear_Click"/>
+                        Click="buttonClear_Click"
+                        Style="{StaticResource ButtonStyle}"/>
                 <Label Content="License Plate"
-                       HorizontalAlignment="Center"/>
-                <Border BorderBrush="Black" 
-                        BorderThickness="4"
-                        Height="35"
-                        Margin="200 5">
+                       HorizontalAlignment="Center"
+                       Foreground="white"
+                       Margin="0 45 0 0"/>
+                <Border BorderBrush="#323131" 
+                        BorderThickness="3"
+                        Background="White"
+                        Height="45"
+                        Margin="180 5">
                     <TextBlock x:Name="TextBlockLicensePlate"
-                               Text="KNT 54891" 
+                               Text="KNT 54891"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
-                               FontSize="20"/>
+                               FontSize="25"/>
                 </Border>
-                <Button Content="(temp) get plate from textblock"
-                        Margin="5"
-                        Click="buttonTemp_Click"/>
+                <Button x:Name="buttonTemp"
+                        Content="(temp) get plate from textblock"
+                        Click="buttonTemp_Click"
+                        Style="{StaticResource ButtonStyle}"/>
                 <Button x:Name="ButtonCheck"
                         Click="ButtonCheck_Click"
                         Content="check if its cop"
-                        Margin="5"/>
+                        Style="{StaticResource ButtonStyle}"/>
                 <TextBlock x:Name="TextBlockCop"
                            Text=""
                            HorizontalAlignment="Center"
-                           FontSize="20"/>
+                           TextAlignment="Center"
+                           Foreground="white"
+                           FontSize="20"
+                           Margin="0 20 0 0"/>
             </StackPanel>
+
             <!-- ListBox z plikami-->
             <!--
             <ListBox x:Name="listFiles" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Height="auto" VerticalAlignment="Bottom"/>
             -->
+
         </Grid>
     </Border>
 </Window>

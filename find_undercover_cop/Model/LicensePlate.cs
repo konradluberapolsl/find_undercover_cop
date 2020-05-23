@@ -47,7 +47,7 @@ namespace find_undercover_cop.Model
 
         #region Methods
 
-        public static string LocationShortcutToLocationFullName(string shortcut)
+        public string LocationShortcutToLocationFullName(string shortcut)
         {
             string fullName = null;
             string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\database\list_of_markings.txt"));
@@ -63,7 +63,7 @@ namespace find_undercover_cop.Model
 
             return fullName;
         }
-        public static string LocationShortcutToLocationVoivodeship(string shortcut)
+        public string LocationShortcutToLocationVoivodeship(string shortcut)
         {
             string voivodeship = null;
             string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\database\list_of_markings.txt"));
@@ -79,7 +79,7 @@ namespace find_undercover_cop.Model
 
             return voivodeship;
         }
-        public static bool CheckIfItsCop(string licensePlate)
+        public bool CheckIfItsCop(string licensePlate)
         {
             string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\database\police_cars.txt"));
             string[][] policeCars = ReadDatabase(path);
@@ -92,7 +92,28 @@ namespace find_undercover_cop.Model
             }
             return false;
         }
-        public static string[][] ReadDatabase(string path)
+        public string GetCopCar(string licensePlate, bool isCop)
+        {
+            if (isCop == true)
+            {
+                string copCar = null;
+                string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\database\police_cars.txt"));
+                string[][] policeCars = ReadDatabase(path);
+                for (int i = 0; i < policeCars.Length; i++)
+                {
+                    if (policeCars[i][0] == licensePlate)
+                    {
+                        copCar = policeCars[i][1];
+                    }
+                }
+                return copCar;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public string[][] ReadDatabase(string path)
         {
             string[] lines = File.ReadAllLines(path);
             string[][] data = new string[lines.Length][];
@@ -107,6 +128,7 @@ namespace find_undercover_cop.Model
             }
             return data;
         }
+
         #endregion
 
     }

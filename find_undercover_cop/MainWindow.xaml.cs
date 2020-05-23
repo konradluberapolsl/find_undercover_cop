@@ -73,7 +73,7 @@ namespace find_undercover_cop
             LicensePlate p = new LicensePlate(TextBlockLicensePlate.Text);
             if (p.isUnderCoverCop)
             {
-                TextBlockCop.Text = "to jes glina";
+                TextBlockCop.Text = "to jes glina: \n" + p.GetCopCar(p.FullLicensePlate, p.isUnderCoverCop);
             }
             else
             {
