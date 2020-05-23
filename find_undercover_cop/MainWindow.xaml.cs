@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using find_undercover_cop.Model;
 
 namespace find_undercover_cop
 {
@@ -47,7 +48,8 @@ namespace find_undercover_cop
 
         private void buttonTemp_Click(object sender, RoutedEventArgs e)
         {
-
+            LicensePlate lp = new LicensePlate("SCI 12345");
+            MessageBox.Show($"tablica rej \nfull plate: {lp.FullLicensePlate}\nloc shortcut: {lp.LocationShortcut}\nloc fullname: {lp.LocationFullName}\nloc voivod: {lp.LocationVoivodeship}\nrand chars: {lp.RandomCharacters}");
         }
 
         private void addFiles_Click(object sender, RoutedEventArgs e)

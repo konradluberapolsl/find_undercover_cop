@@ -30,29 +30,73 @@ namespace find_undercover_cop.Model
 
         #region Ctor
 
+        public LicensePlate(string fullLicensePlate)
+        {
+            FullLicensePlate = fullLicensePlate;
+
+            LocationShortcut = FullLicensePlate.Substring(0, 3).Trim();
+            LocationFullName = LocationShortcutToLocationFullName(LocationShortcut);
+            LocationVoivodeship = LocationShortcutToLocationVoivodeship(LocationShortcut);
+
+            RandomCharacters = FullLicensePlate.Substring(3).Trim();
+
+            isUnderCoverCop = false;
+        }
+
         #endregion
 
         #region Methods
 
-        public void ShortcutToFullName(string shortcut)
+        public static string LocationShortcutToLocationFullName(string shortcut)
         {
-            string fullName;
-            //plik z rozwinieciami
+            string fullName = null;
             string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\database\list_of_markings.txt"));
-            //przerabianie pliku 
-            string[] lines = File.ReadAllLines(path);
-            string[][] listOfMarkings = new string[lines.Length][];
-            for (int i = 0; i < lines.Length; i++)
+            //plik -> tablica dwuwymiarowa o kolumnach shortcut,voivodeship,fullname
+            string[][] listOfMarkings = ReadDatabaseOfNames(path);
+            for (int i = 0; i < listOfMarkings.Length; i++)
             {
-                string[] tmp = lines[i].Split(',');
-                for (int j = 0; j < tmp.Length; j++)
+                if (listOfMarkings[i][0] == shortcut)
                 {
-                    listOfMarkings[i][j] = tmp[j];
+                    fullName = listOfMarkings[i][2];
                 }
             }
+
+            return fullName;
+        }
+        public static string LocationShortcutToLocationVoivodeship(string shortcut)
+        {
+            string voivodeship = null;
+            string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\database\list_of_markings.txt"));
+            //plik -> tablica dwuwymiarowa o kolumnach shortcut,voivodeship,fullname
+            string[][] listOfMarkings = ReadDatabaseOfNames(path);
+            for (int i = 0; i < listOfMarkings.Length; i++)
+            {
+                if (listOfMarkings[i][0] == shortcut)
+                {
+                    voivodeship = listOfMarkings[i][1];
+                }
+            }
+
+            return voivodeship;
+        }
+        public static string[][] ReadDatabaseOfNames(string path)
+        {
+            string[] lines = File.ReadAllLines(path);
+            string[][] data = new string[lines.Length][];
+            for (int i = 0; i < lines.Length; i++)
+            {
+                string[] temp = lines[i].Split(',');
+                data[i] = new string[temp.Length];
+                for (int j = 0; j < temp.Length; j++)
+                {
+                    data[i][j] = temp[j];
+                }
+            }
+            return data;
         }
 
         #endregion
 
     }
 }
+//
