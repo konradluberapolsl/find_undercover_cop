@@ -31,25 +31,29 @@ namespace find_undercover_cop
                 return;
             }
 
-            //tylko jeden element
-            listFiles.Items.Clear();
+            //dopisywanie do listy/textboxa
 
+            //tylko jeden element
+            //listFiles.Items.Clear();
             foreach (string s in droppedFiles)
             {
-                listFiles.Items.Add(s);
+                //listFiles.Items.Add(s);
+                TextBlockCop.Text = "";
+                TextBoxPath.Text = s;
             }
-
         }
 
         private void buttonClear_Click(object sender, RoutedEventArgs e)
         {
-            listFiles.Items.Clear();
+            //listFiles.Items.Clear();
+            TextBoxPath.Text = "";
+            TextBlockCop.Text = "";
         }
 
         private void buttonTemp_Click(object sender, RoutedEventArgs e)
         {
-            LicensePlate lp = new LicensePlate("SCI 12345");
-            MessageBox.Show($"tablica rej \nfull plate: {lp.FullLicensePlate}\nloc shortcut: {lp.LocationShortcut}\nloc fullname: {lp.LocationFullName}\nloc voivod: {lp.LocationVoivodeship}\nrand chars: {lp.RandomCharacters}");
+            LicensePlate p = new LicensePlate(TextBlockLicensePlate.Text);
+            MessageBox.Show($"tablica rej \nfull plate: {p.FullLicensePlate}\nloc shortcut: {p.LocationShortcut}\nloc fullname: {p.LocationFullName}\nloc voivod: {p.LocationVoivodeship}\nrand chars: {p.RandomCharacters}");
         }
 
         private void addFiles_Click(object sender, RoutedEventArgs e)
@@ -57,8 +61,23 @@ namespace find_undercover_cop
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
             {
-                listFiles.Items.Clear();
-                listFiles.Items.Add(openFileDialog.FileName);
+                //listFiles.Items.Clear();
+                //listFiles.Items.Add(openFileDialog.FileName);
+                TextBlockCop.Text = "";
+                TextBoxPath.Text = openFileDialog.FileName;
+            }
+        }
+
+        private void ButtonCheck_Click(object sender, RoutedEventArgs e)
+        {
+            LicensePlate p = new LicensePlate(TextBlockLicensePlate.Text);
+            if (p.isUnderCoverCop)
+            {
+                TextBlockCop.Text = "to jes glina";
+            }
+            else
+            {
+                TextBlockCop.Text = "to nie jest glina";
             }
         }
     }

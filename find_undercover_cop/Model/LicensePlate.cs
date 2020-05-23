@@ -40,7 +40,7 @@ namespace find_undercover_cop.Model
 
             RandomCharacters = FullLicensePlate.Substring(3).Trim();
 
-            isUnderCoverCop = false;
+            isUnderCoverCop = CheckIfItsCop(FullLicensePlate);
         }
 
         #endregion
@@ -52,7 +52,7 @@ namespace find_undercover_cop.Model
             string fullName = null;
             string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\database\list_of_markings.txt"));
             //plik -> tablica dwuwymiarowa o kolumnach shortcut,voivodeship,fullname
-            string[][] listOfMarkings = ReadDatabaseOfNames(path);
+            string[][] listOfMarkings = ReadDatabase(path);
             for (int i = 0; i < listOfMarkings.Length; i++)
             {
                 if (listOfMarkings[i][0] == shortcut)
@@ -68,7 +68,7 @@ namespace find_undercover_cop.Model
             string voivodeship = null;
             string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\database\list_of_markings.txt"));
             //plik -> tablica dwuwymiarowa o kolumnach shortcut,voivodeship,fullname
-            string[][] listOfMarkings = ReadDatabaseOfNames(path);
+            string[][] listOfMarkings = ReadDatabase(path);
             for (int i = 0; i < listOfMarkings.Length; i++)
             {
                 if (listOfMarkings[i][0] == shortcut)
@@ -79,7 +79,20 @@ namespace find_undercover_cop.Model
 
             return voivodeship;
         }
-        public static string[][] ReadDatabaseOfNames(string path)
+        public static bool CheckIfItsCop(string licensePlate)
+        {
+            string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\database\police_cars.txt"));
+            string[][] policeCars = ReadDatabase(path);
+            for (int i = 0; i < policeCars.Length; i++)
+            {
+                if (policeCars[i][0] == licensePlate)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public static string[][] ReadDatabase(string path)
         {
             string[] lines = File.ReadAllLines(path);
             string[][] data = new string[lines.Length][];
@@ -94,7 +107,6 @@ namespace find_undercover_cop.Model
             }
             return data;
         }
-
         #endregion
 
     }
