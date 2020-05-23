@@ -59,6 +59,8 @@ namespace find_undercover_cop
         private void addFiles_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+
             if (openFileDialog.ShowDialog() == true)
             {
                 //listFiles.Items.Clear();
