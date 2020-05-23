@@ -59,5 +59,68 @@ namespace find_undercover_cop.Resources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check if it&apos;s a cop!.
+        /// </summary>
+        public static string ButtonCheck {
+            get {
+                return ResourceManager.GetString("ButtonCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click here.
+        /// </summary>
+        public static string ButtonUploadFile {
+            get {
+                return ResourceManager.GetString("ButtonUploadFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tablica rejestracyjna.
+        /// </summary>
+        public static string LabelLicensePlate {
+            get {
+                return ResourceManager.GetString("LabelLicensePlate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload file.
+        /// </summary>
+        public static string LabelUploadFile {
+            get {
+                return ResourceManager.GetString("LabelUploadFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to or.
+        /// </summary>
+        public static string LaberOr {
+            get {
+                return ResourceManager.GetString("LaberOr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drop file here.
+        /// </summary>
+        public static string TextBoxDragAndDropFile {
+            get {
+                return ResourceManager.GetString("TextBoxDragAndDropFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find Undercover Cop .
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
     }
 }

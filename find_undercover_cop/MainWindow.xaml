@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:find_undercover_cop"
         xmlns:vm="clr-namespace:find_undercover_cop.ViewModel"
+        xmlns:resx="clr-namespace:find_undercover_cop.Resources"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         Title="Find Undercover Cop" 
@@ -29,11 +30,11 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
 
-            <!-- Top panel-->
+            <!-- TOP PANEL-->
             <StackPanel Orientation="Horizontal" 
                         Grid.Row="0" Grid.ColumnSpan="2"
                         Background="#004242">
-                <TextBlock Text="Find Undercover Cop "
+                <TextBlock Text="{Binding Source={x:Static resx:Resources.Title}}"
                            Foreground="White"
                            FontSize="30"
                            FontFamily="MV Boli"
@@ -42,74 +43,102 @@
 
 
             <!-- LEFT SIDE -->
-            <Border BorderBrush="#323131" 
-                    Grid.Row="1" 
+            <StackPanel Grid.Row="1"  Grid.Column="0" Margin="0 5 0 0">
+
+                <!-- Label "Upload file"-->
+                <Label Content="{Binding Source={x:Static resx:Resources.LabelUploadFile}}"
+                       Foreground="White"
+                       Margin="2 0"/>
+
+                <!-- Drag and drop field -->
+                <Border BorderBrush="#323131"                     
                     BorderThickness="3" 
-                    Margin="20 32 20 130" 
                     Name="DDplace" 
                     Drop="DDplace_Drop" 
                     AllowDrop="true"
                     Background="#676767"
+                    Height="200"
+                    Margin="20 0 20 5"
                     >
-                <TextBlock Text="drop file here" 
-                           Foreground="#323131"
-                           TextAlignment="Center" />
-            </Border>
-            <Button x:Name="addFiles"
-                    Click="addFiles_Click"
-                    Content="or click here"
-                    Grid.Row="1" 
-                    Margin="20 245 20 80"
-                    Style="{StaticResource ButtonStyle}"/>
+                    <TextBlock Text="{Binding Source={x:Static resx:Resources.TextBoxDragAndDropFile}}"
+                               Foreground="#acacac"
+                               TextAlignment="Center" 
+                               Padding="0 90"/>
+                </Border>
+
+                <!-- Label "or" -->
+                <Label Content="{Binding Source={x:Static resx:Resources.LaberOr}}"
+                       Foreground="White"
+                       HorizontalAlignment="Center"/>
+
+                <!-- Button upload -->
+                <Button x:Name="addFiles"
+                        Command="{Binding LoadFileByButton}"
+                        Content="{Binding Source={x:Static resx:Resources.ButtonUploadFile}}"
+                        Height="50"
+                        Margin="20 5"
+                        Style="{StaticResource ButtonStyle}"/>
+            </StackPanel>
 
             <!-- RIGHT SIDE -->
-            <StackPanel Grid.Row="1" 
-                        Grid.Column="1"
-                        Margin="0 5 0 0">
+            <StackPanel Grid.Row="1" Grid.Column="1" Margin="0 5 0 0">
+
+                <!-- Path 
+                            wydaje mi się że to jest niepotrzebnie i jakoś inaczej bym przedstawił że plik jest załadowany
+                            ale póki co niech zostanie roboczo
+                -->
                 <Label Content="Path"
-                       Foreground="white"/>
+                       Foreground="White"/>
                 <TextBox x:Name="TextBoxPath" 
                          IsEnabled="False"
+                         Text="{Binding FilePath}"
+                         BorderBrush="#323131"
+                         BorderThickness="3"
+                         FontSize="14"
                          Margin="5 0"/>
                 <Button Content="clear file"
-                        Click="buttonClear_Click"
+                        Command="{Binding Clear}"
                         Style="{StaticResource ButtonStyle}"/>
-                <Label Content="License Plate"
+
+                <!-- LicensePlate -->
+                <Label Content="{Binding Source={x:Static resx:Resources.LabelLicensePlate}}"
                        HorizontalAlignment="Center"
                        Foreground="white"
-                       Margin="0 45 0 0"/>
+                       Margin="0 20 0 0"/>
+
                 <Border BorderBrush="#323131" 
                         BorderThickness="3"
                         Background="White"
                         Height="45"
                         Margin="180 5">
                     <TextBlock x:Name="TextBlockLicensePlate"
-                               Text="KNT 54891"
+                               Text="{Binding Path=CurrentLicensePlate.FullLicensePlate}"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontSize="25"/>
                 </Border>
-                <Button x:Name="buttonTemp"
-                        Content="(temp) get plate from textblock"
-                        Click="buttonTemp_Click"
-                        Style="{StaticResource ButtonStyle}"/>
+
+                <!-- 
+                
+                tutaj wrzucic jakos zgrabnie wojewodztwo i lokalizacje
+                
+                -->
+
+                <!-- Check if it's a cop -->
                 <Button x:Name="ButtonCheck"
-                        Click="ButtonCheck_Click"
-                        Content="check if its cop"
+                        Command="{Binding CheckIfItsCop}"
+                        Content="{Binding Source={x:Static resx:Resources.ButtonCheck}}"
                         Style="{StaticResource ButtonStyle}"/>
+
                 <TextBlock x:Name="TextBlockCop"
-                           Text=""
+                           Text="{Binding IsItCopStatement}"
                            HorizontalAlignment="Center"
                            TextAlignment="Center"
                            Foreground="white"
                            FontSize="20"
                            Margin="0 20 0 0"/>
-            </StackPanel>
 
-            <!-- ListBox z plikami-->
-            <!--
-            <ListBox x:Name="listFiles" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Height="auto" VerticalAlignment="Bottom"/>
-            -->
+            </StackPanel>
 
         </Grid>
     </Border>

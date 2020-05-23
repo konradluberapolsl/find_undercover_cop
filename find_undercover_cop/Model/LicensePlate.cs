@@ -23,8 +23,8 @@ namespace find_undercover_cop.Model
         //druga czesc tablicy rej
         public string RandomCharacters { get; set; }
 
-        //czy jest psem
-        public bool isUnderCoverCop { get; set; }
+        //czy jest gliniarzem
+        public bool isUndercoverCop { get; set; }
 
         #endregion
 
@@ -40,7 +40,7 @@ namespace find_undercover_cop.Model
 
             RandomCharacters = FullLicensePlate.Substring(3).Trim();
 
-            isUnderCoverCop = CheckIfItsCop(FullLicensePlate);
+            isUndercoverCop = CheckIfItsCop(FullLicensePlate);
         }
 
         #endregion
@@ -92,26 +92,19 @@ namespace find_undercover_cop.Model
             }
             return false;
         }
-        public string GetCopCar(string licensePlate, bool isCop)
+        public string GetCopCar(string licensePlate)
         {
-            if (isCop == true)
+            string copCar = null;
+            string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\database\police_cars.txt"));
+            string[][] policeCars = ReadDatabase(path);
+            for (int i = 0; i < policeCars.Length; i++)
             {
-                string copCar = null;
-                string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\database\police_cars.txt"));
-                string[][] policeCars = ReadDatabase(path);
-                for (int i = 0; i < policeCars.Length; i++)
+                if (policeCars[i][0] == licensePlate)
                 {
-                    if (policeCars[i][0] == licensePlate)
-                    {
-                        copCar = policeCars[i][1];
-                    }
+                    copCar = policeCars[i][1];
                 }
-                return copCar;
             }
-            else
-            {
-                return null;
-            }
+            return copCar;
         }
         public string[][] ReadDatabase(string path)
         {
@@ -133,4 +126,3 @@ namespace find_undercover_cop.Model
 
     }
 }
-//

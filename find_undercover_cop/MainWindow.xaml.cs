@@ -14,13 +14,9 @@ namespace find_undercover_cop
             InitializeComponent();
         }
 
-        //wstępne ogarnięcie drag and dropa
-
         private void DDplace_Drop(object sender, DragEventArgs e)
         {
             string[] droppedFiles = null;
-
-
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 droppedFiles = e.Data.GetData(DataFormats.FileDrop, true) as string[];
@@ -31,56 +27,57 @@ namespace find_undercover_cop
                 return;
             }
 
-            //dopisywanie do listy/textboxa
-
-            //tylko jeden element
-            //listFiles.Items.Clear();
             foreach (string s in droppedFiles)
             {
-                //listFiles.Items.Add(s);
                 TextBlockCop.Text = "";
                 TextBoxPath.Text = s;
+                if (Path.GetExtension(s) == ".txt")
+                {
+                    string[] textFromFile = File.ReadAllLines(s);
+                    TextBlockLicensePlate.Text = textFromFile[0];
+                }
+                else
+                {
+                    TextBlockLicensePlate.Text = "";
+                }
             }
         }
 
-        private void buttonClear_Click(object sender, RoutedEventArgs e)
-        {
-            //listFiles.Items.Clear();
-            TextBoxPath.Text = "";
-            TextBlockCop.Text = "";
-        }
+        //private void addFiles_Click(object sender, RoutedEventArgs e)
+        //{
+        //    OpenFileDialog openFileDialog = new OpenFileDialog();
+        //    openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+        //    openFileDialog.Filter = "Text files (*.txt) | *.txt;";
+        //    if (openFileDialog.ShowDialog() == true)
+        //    {
+        //        TextBlockCop.Text = "";
+        //        TextBoxPath.Text = openFileDialog.FileName;
+        //        if (Path.GetExtension(openFileDialog.FileName) == ".txt")
+        //        {
+        //            string[] textFromFile = File.ReadAllLines(openFileDialog.FileName);
+        //            TextBlockLicensePlate.Text = textFromFile[0];
+        //        }
+        //    }
+        //}
 
-        private void buttonTemp_Click(object sender, RoutedEventArgs e)
-        {
-            LicensePlate p = new LicensePlate(TextBlockLicensePlate.Text);
-            MessageBox.Show($"tablica rej \nfull plate: {p.FullLicensePlate}\nloc shortcut: {p.LocationShortcut}\nloc fullname: {p.LocationFullName}\nloc voivod: {p.LocationVoivodeship}\nrand chars: {p.RandomCharacters}");
-        }
-
-        private void addFiles_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
-
-            if (openFileDialog.ShowDialog() == true)
-            {
-                //listFiles.Items.Clear();
-                //listFiles.Items.Add(openFileDialog.FileName);
-                TextBlockCop.Text = "";
-                TextBoxPath.Text = openFileDialog.FileName;
-            }
-        }
-
-        private void ButtonCheck_Click(object sender, RoutedEventArgs e)
-        {
-            LicensePlate p = new LicensePlate(TextBlockLicensePlate.Text);
-            if (p.isUnderCoverCop)
-            {
-                TextBlockCop.Text = "to jes glina: \n" + p.GetCopCar(p.FullLicensePlate, p.isUnderCoverCop);
-            }
-            else
-            {
-                TextBlockCop.Text = "to nie jest glina";
-            }
-        }
+        //private void ButtonCheck_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (TextBlockLicensePlate.Text != "")
+        //    {
+        //        LicensePlate p = new LicensePlate(TextBlockLicensePlate.Text);
+        //        if (p.isUnderCoverCop)
+        //        {
+        //            TextBlockCop.Text = "to jes glina: \n" + p.GetCopCar(p.FullLicensePlate, p.isUnderCoverCop);
+        //        }
+        //        else
+        //        {
+        //            TextBlockCop.Text = "to nie jest glina";
+        //        }
+        //    }
+        //    else
+        //    {
+        //        TextBlockLicensePlate.Text = "";
+        //    }
+        //}
     }
 }
