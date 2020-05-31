@@ -144,7 +144,7 @@ namespace find_undercover_cop.ViewModel
                         if (CurrentLicensePlate.isUndercoverCop)
                         {
                             //napraw bo nie pokazuje jakim autem jeździ gliniarz
-                            IsItCopStatement = $"To gliniarz {CurrentLicensePlate.GetCopCar(FullLicensePlate)}";
+                            IsItCopStatement = $"To gliniarz \n{CurrentLicensePlate.GetCopCar(CurrentLicensePlate.FullLicensePlate)}";
                         }
                         else
                         {

@@ -120,7 +120,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\AI\" />
+    <Folder Include="Model\AI\Detection\" />
+    <Folder Include="Model\AI\NeutralNetwork\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
