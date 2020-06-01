@@ -61,6 +61,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\AI\NeutralNetwork\NeuroAdaline.cs" />
+    <Compile Include="Model\AI\NeutralNetwork\NeuroBackProp.cs" />
+    <Compile Include="Model\AI\NeutralNetwork\NeuroCustom.cs" />
+    <Compile Include="Model\AI\NeutralNetwork\NeuroPattern.cs" />
+    <Compile Include="Model\AI\NeutralNetwork\OCRNetwork.cs" />
     <Compile Include="Resources\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -121,7 +126,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\AI\Detection\" />
-    <Folder Include="Model\AI\NeutralNetwork\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
