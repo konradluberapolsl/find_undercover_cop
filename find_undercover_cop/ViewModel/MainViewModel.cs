@@ -1,4 +1,5 @@
-﻿using find_undercover_cop.Model;
+﻿
+using find_undercover_cop.Model;
 using find_undercover_cop.Model.AI.NeutralNetwork;
 using find_undercover_cop.ViewModel.BaseClass;
 using Microsoft.Win32;
@@ -14,11 +15,11 @@ using System.Windows.Input;
 
 namespace find_undercover_cop.ViewModel
 {
-    class MainViewModel: ViewModelBase
+    class MainViewModel : ViewModelBase
     {
         #region Fields
 
-        private Recognition recognition;
+        private Recognition recognition = new Recognition();
 
         private LicensePlate currentLicensePlate;
         private string fullLicensePlate;
@@ -95,9 +96,9 @@ namespace find_undercover_cop.ViewModel
                 if (loadFileByDragAndDrop == null)
                 {
                     loadFileByDragAndDrop = new RelayCommand(execute =>
-                        {
-                            //no tutaj będzie problem bo przeceiż jest ten argument, trzeba bedzie ogarnac to dependency najprawdopodobniej
-                        }, canExecute => true);
+                    {
+                        //no tutaj będzie problem bo przeceiż jest ten argument, trzeba bedzie ogarnac to dependency najprawdopodobniej
+                    }, canExecute => true);
                 }
                 return loadFileByDragAndDrop;
             }
@@ -112,9 +113,9 @@ namespace find_undercover_cop.ViewModel
                 if (loadFileByButton == null)
                 {
                     loadFileByButton = new RelayCommand(execute =>
-                        {
-                            LoadFileDialog();
-                        }, canExecute => true);
+                    {
+                        LoadFileDialog();
+                    }, canExecute => true);
                 }
                 return loadFileByButton;
             }
