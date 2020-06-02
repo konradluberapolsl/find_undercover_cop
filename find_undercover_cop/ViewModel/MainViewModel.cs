@@ -18,7 +18,7 @@ namespace find_undercover_cop.ViewModel
     {
         #region Fields
 
-        private Recognition recognition;
+        private Recognition recognition = new Recognition();
 
         private LicensePlate currentLicensePlate;
         private string fullLicensePlate;

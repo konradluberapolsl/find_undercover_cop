@@ -30,6 +30,29 @@ namespace find_undercover_cop.Model.AI.NeutralNetwork
 
         #endregion
 
+        #region Ctor
+
+        public Recognition()
+        {
+            //generate training patterns
+            trainingPatterns = CreateTrainingPatternsFromDatabase();
+            Console.WriteLine("-----generate trai-----------");
+
+            //create the network object
+            backpropNetwork = new OCRNetwork(owner, new int[3] { aMatrixDim * aMatrixDim, ((aMatrixDim * aMatrixDim) + charsCount) / 2, charsCount });
+            Console.WriteLine("-----------------------------CNO-----------------------------");
+
+
+            //now we should think if we want to train again or we load the network. 
+            //but it's logic to load it
+            backpropNetwork.Train(trainingPatterns);
+            Console.WriteLine("-----------------------------TTN-----------------------------");
+            //or
+            //backpropNetwork.LoadFromFile(...........nazwapliku................);
+        }
+
+        #endregion
+
         #region Methods
 
         public PatternsCollection CreateTrainingPatternsFromDatabase()
@@ -142,23 +165,6 @@ namespace find_undercover_cop.Model.AI.NeutralNetwork
         public string Recognize(Bitmap bmp)
         {
             string s = null;
-
-            //generate training patterns
-            trainingPatterns = CreateTrainingPatternsFromDatabase();
-            Console.WriteLine("-----generate trai-----------");
-
-            //create the network object
-            backpropNetwork = new OCRNetwork(owner, new int[3] { aMatrixDim * aMatrixDim, ((aMatrixDim * aMatrixDim) + charsCount) / 2, charsCount });
-            Console.WriteLine("-----------------------------CNO-----------------------------");
-
-
-            //now we should think if we want to train again or we load the network. 
-            //but it's logic to load it
-            backpropNetwork.Train(trainingPatterns);
-            Console.WriteLine("-----------------------------TTN-----------------------------");
-
-            //or
-            //backpropNetwork.LoadFromFile(...........nazwapliku................);
 
             //testing
             double[] aInput = BitmapToDoubleArray(bmp, aMatrixDim);
