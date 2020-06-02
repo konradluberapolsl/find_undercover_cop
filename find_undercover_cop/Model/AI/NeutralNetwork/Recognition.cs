@@ -97,7 +97,7 @@ namespace find_undercover_cop.Model.AI.NeutralNetwork
         public double[] BitmapToDoubleArray(Bitmap aSrc, int aArrayDim)
         {
             var result = new double[aArrayDim * aArrayDim];
-
+        
             var bmp = Graphics.FromImage(aSrc);
             bmp.SmoothingMode = SmoothingMode.None;
             bmp.InterpolationMode = InterpolationMode.NearestNeighbor;

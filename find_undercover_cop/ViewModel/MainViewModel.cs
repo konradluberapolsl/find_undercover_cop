@@ -225,19 +225,20 @@ namespace find_undercover_cop.ViewModel
             foreach(var letter in charBitmaps)
             {
                 charsFromPicture += recognition.Recognize(letter);
+                Console.WriteLine(recognition.Recognize(letter));
             }
             //for (int i = 0; i < charsCount; i++)
             //{
             //    //cos w tym stylu
             //    charsFromPicture += recognition.Recognize(charBitmaps[i]);
             //}
-            Bitmap testBitmap = new Bitmap(path);
-            charsFromPicture += recognition.Recognize(testBitmap);
+            //Bitmap testBitmap = new Bitmap(path);
+           // charsFromPicture += recognition.Recognize(testBitmap);
 
             //
             //konstruktor tablicy i wkladamy do niego stringa
             //
-            CurrentLicensePlate = new LicensePlate("SCI 1234" + charsFromPicture);
+            CurrentLicensePlate = new LicensePlate(charsFromPicture);
         }
     }
     #endregion

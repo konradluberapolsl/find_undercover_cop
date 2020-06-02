@@ -30,7 +30,7 @@ namespace find_undercover_cop.Model
         {
             FullLicensePlate = fullLicensePlate;
 
-            LocationShortcut = FullLicensePlate.Substring(0, 3).Trim();
+            LocationShortcut = FullLicensePlate;
             LocationFullName = LocationShortcutToLocationFullName(LocationShortcut);
             LocationVoivodeship = LocationShortcutToLocationVoivodeship(LocationShortcut);
 

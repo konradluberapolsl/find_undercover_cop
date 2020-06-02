@@ -14,7 +14,7 @@ namespace find_undercover_cop.Model.AI
 {
     class Detection
     {
-        private Mat Source;
+        private Mat Source = new Mat();
         private Dictionary<int, Rectangle> possibleContours = new Dictionary<int, Rectangle>();
         private List<List<Rectangle>> possibleAreas = new List<List<Rectangle>>();
         private List<Bitmap> letters = new List<Bitmap>();
@@ -22,8 +22,8 @@ namespace find_undercover_cop.Model.AI
         public Detection(string path)
         {
             Source = CvInvoke.Imread(path, Emgu.CV.CvEnum.ImreadModes.AnyColor);
-            //FirstStep(PreProces(Source));
-            //SecondStep();
+            FirstStep(PreProces(Source));
+            SecondStep();
         }
 
         public Mat PreProces(Mat src)
@@ -126,7 +126,7 @@ namespace find_undercover_cop.Model.AI
                     if (ar > 4.2 && ar < 5.5 && brect.Width > 200)
                     {
 
-                        CvInvoke.Rectangle(item, brect, new MCvScalar(0, 0, 255), 3);
+                        CvInvoke.Rectangle(item, brect, new MCvScalar(0, 0, 255), 0);
                         var image = item;
                         image.ROI = brect;
                         var out_img = image.Copy();
@@ -144,11 +144,16 @@ namespace find_undercover_cop.Model.AI
                             double a = (double)br.Width / (double)br.Height;
                             if (a < 0.8 && br.Height < 60 && br.Height > 25)
                             {
-                                CvInvoke.Rectangle(out_img, br, new MCvScalar(0, 0, 255), 3);
+                                CvInvoke.Rectangle(out_img, br, new MCvScalar(0, 0, 255), 0);
                                 var letter = out_img;
                                 letter.ROI = br;
                                 var out_letter = letter.Copy();
-                                letters.Add(out_letter.ToBitmap<Bgr, byte>());
+                                Image<Gray, Byte> gray_letter = out_letter.Convert<Gray, Byte>();
+                                Image<Gray, byte> binary_letter = new Image<Gray, byte>(gray_letter.Width,gray_letter.Height,new Gray(0));
+                                CvInvoke.AdaptiveThreshold(gray_letter, binary_letter, 255, AdaptiveThresholdType.GaussianC, ThresholdType.Binary, 55, 5);
+                                Image<Bgr, byte> o = binary_letter.Convert<Bgr, byte>();
+                                //letters.Add(binary_letter.ToBitmap<Gray, byte>());
+                                letters.Add(o.ToBitmap<Bgr,byte>());
                             }
                         }
                     }
