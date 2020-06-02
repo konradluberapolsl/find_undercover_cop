@@ -50,7 +50,7 @@
                        Foreground="White"
                        Margin="2 0"/>
 
-                <!-- Drag and drop field 
+                <!-- Drag and drop field -->
                 <Border BorderBrush="#323131"                     
                     BorderThickness="3" 
                     Name="DDplace"
@@ -63,7 +63,7 @@
                                TextAlignment="Center" 
                                Padding="0 90"/>
                 </Border>
-                -->
+
                 <!-- Label "or" -->
                 <Label Content="{Binding Source={x:Static resx:Resources.LaberOr}}"
                        Foreground="White"

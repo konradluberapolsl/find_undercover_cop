@@ -1,8 +1,10 @@
 ﻿using find_undercover_cop.Model;
+using find_undercover_cop.Model.AI.NeutralNetwork;
 using find_undercover_cop.ViewModel.BaseClass;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -15,6 +17,8 @@ namespace find_undercover_cop.ViewModel
     class MainViewModel: ViewModelBase
     {
         #region Fields
+
+        private Recognition recognition;
 
         private LicensePlate currentLicensePlate;
         private string fullLicensePlate;
@@ -64,6 +68,7 @@ namespace find_undercover_cop.ViewModel
                 onPropertyChanged(nameof(isItCopStatement));
             }
         }
+
         #endregion
 
         #region Ctor
@@ -108,23 +113,7 @@ namespace find_undercover_cop.ViewModel
                 {
                     loadFileByButton = new RelayCommand(execute =>
                         {
-                            //temporary solution 
-                            //with get it from txt 
-                            //until we will have AI which get it from JPG
-
-                            IsItCopStatement = "";
-                            OpenFileDialog openFileDialog = new OpenFileDialog();
-                            //openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
-                            openFileDialog.Filter = "Text files (*.txt) | *.txt;";
-                            if (openFileDialog.ShowDialog() == true)
-                            {
-                                if (Path.GetExtension(openFileDialog.FileName) == ".txt")
-                                {
-                                    string[] textFromFile = File.ReadAllLines(openFileDialog.FileName);
-                                    CurrentLicensePlate = new LicensePlate(textFromFile[0]);
-                                    FilePath = openFileDialog.FileName;
-                                }
-                            }
+                            LoadFileDialog();
                         }, canExecute => true);
                 }
                 return loadFileByButton;
@@ -169,12 +158,82 @@ namespace find_undercover_cop.ViewModel
                         CurrentLicensePlate = null;
                         FilePath = null;
                         IsItCopStatement = null;
-                    }, canExecute => CurrentLicensePlate != null && FilePath != null);
+                    }, canExecute => FilePath != null);
+                    //}, canExecute => CurrentLicensePlate != null && FilePath != null);
                 }
                 return clear;
             }
         }
 
         #endregion
+        //system przechowywania informacji
+        #region Methods
+
+        public void LoadFileDialog()
+        {
+            //
+            //temporary solution 
+            //with get it from txt 
+            //until we will have AI which get it from JPG
+            //
+            //
+            //...........................
+            //
+
+            //
+            //tutaj trzeba wpierdolic AI
+            //
+
+            //..........................
+            //
+            //
+            IsItCopStatement = "";
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                FilePath = openFileDialog.FileName;
+            }
+            if (FilePath != null)
+            {
+                DetectAndRecognizeLetters(FilePath);
+            }
+
+        }
+
+        public void DetectAndRecognizeLetters(string path)
+        {
+            //
+            //detekcja
+            //
+
+
+            //detekcja(path)
+            //
+            // temp solution before detection - w kazdym razie zwracasz mi tutaj tablice bitmap
+            int charsCount = 7;
+            Bitmap[] charBitmaps = new Bitmap[charsCount];
+
+
+            //
+            //rozpoznanie znakow i dodawanie ich do stringa 
+            //
+
+            string charsFromPicture = null;
+            //for (int i = 0; i < charsCount; i++)
+            //{
+            //    //cos w tym stylu
+            //    charsFromPicture += recognition.Recognize(charBitmaps[i]);
+            //}
+            Bitmap testBitmap = new Bitmap(path);
+            charsFromPicture += recognition.Recognize(testBitmap);
+
+            //
+            //konstruktor tablicy i wkladamy do niego stringa
+            //
+            CurrentLicensePlate = new LicensePlate("SCI 1234" + charsFromPicture);
+        }
     }
+    #endregion
+
 }
