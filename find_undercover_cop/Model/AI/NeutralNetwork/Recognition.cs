@@ -64,7 +64,7 @@ namespace find_undercover_cop.Model.AI.NeutralNetwork
             //
             for (var i = 0; i < letterCount; i++)
             {
-                string path = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), @"..\..\..\database\Samples\")) + Convert.ToChar(firstLetter + i) + "_binary\\0.png";
+                string path = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), @"..\..\..\database\smpl\")) + Convert.ToChar(firstLetter + i) + "_binary\\0.png";
                 Console.WriteLine(i + ". " + path);
                 var aBitMatrix = BitmapToDoubleArray(new Bitmap(path), aMatrixDim);
 
@@ -80,7 +80,7 @@ namespace find_undercover_cop.Model.AI.NeutralNetwork
             int t = 0;
             for (var i = letterCount; i < charsCount; i++)
             {
-                string path = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), @"..\..\..\database\Samples\")) + Convert.ToChar(firstDigit + t) + "_binary\\0.png";
+                string path = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), @"..\..\..\database\smpl\")) + Convert.ToChar(firstDigit + t) + "_binary\\0.png";
                 Console.WriteLine(i + ". " + path);
                 var aBitMatrix = BitmapToDoubleArray(new Bitmap(path), aMatrixDim);
 
@@ -97,7 +97,7 @@ namespace find_undercover_cop.Model.AI.NeutralNetwork
         public double[] BitmapToDoubleArray(Bitmap aSrc, int aArrayDim)
         {
             var result = new double[aArrayDim * aArrayDim];
-        
+
             var bmp = Graphics.FromImage(aSrc);
             bmp.SmoothingMode = SmoothingMode.None;
             bmp.InterpolationMode = InterpolationMode.NearestNeighbor;

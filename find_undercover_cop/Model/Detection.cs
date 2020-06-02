@@ -149,11 +149,11 @@ namespace find_undercover_cop.Model.AI
                                 letter.ROI = br;
                                 var out_letter = letter.Copy();
                                 Image<Gray, Byte> gray_letter = out_letter.Convert<Gray, Byte>();
-                                Image<Gray, byte> binary_letter = new Image<Gray, byte>(gray_letter.Width,gray_letter.Height,new Gray(0));
+                                Image<Gray, byte> binary_letter = new Image<Gray, byte>(gray_letter.Width, gray_letter.Height, new Gray(0));
                                 CvInvoke.AdaptiveThreshold(gray_letter, binary_letter, 255, AdaptiveThresholdType.GaussianC, ThresholdType.Binary, 55, 5);
                                 Image<Bgr, byte> o = binary_letter.Convert<Bgr, byte>();
                                 //letters.Add(binary_letter.ToBitmap<Gray, byte>());
-                                letters.Add(o.ToBitmap<Bgr,byte>());
+                                letters.Add(o.ToBitmap<Bgr, byte>());
                             }
                         }
                     }
