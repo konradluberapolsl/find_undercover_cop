@@ -8,24 +8,22 @@ using Emgu.CV.Structure;
 using Emgu.CV.Util;
 using System.Drawing;
 using Emgu.CV.Features2D;
-using System.Drawing;
 using System.Threading.Tasks;
 
 namespace find_undercover_cop.Model.AI
 {
     class Detection
     {
-        private Mat src = new Mat();
+        private Mat Source;
         private Dictionary<int, Rectangle> possibleContours = new Dictionary<int, Rectangle>();
         private List<List<Rectangle>> possibleAreas = new List<List<Rectangle>>();
         private List<Bitmap> letters = new List<Bitmap>();
         public List<Bitmap> Letters { get => letters; }
-        Mat Source;
         public Detection(string path)
         {
-            this.Source = CvInvoke.Imread(path, Emgu.CV.CvEnum.ImreadModes.AnyColor);
-            FirstStep(PreProces(Source));
-            SecondStep();
+            Source = CvInvoke.Imread(path, Emgu.CV.CvEnum.ImreadModes.AnyColor);
+            //FirstStep(PreProces(Source));
+            //SecondStep();
         }
 
         public Mat PreProces(Mat src)
@@ -102,8 +100,8 @@ namespace find_undercover_cop.Model.AI
                 if (!r.IntersectsWith(last))
                 {
                     n++;
-                    CvInvoke.Rectangle(src, r, new MCvScalar(0, 0, 255), 0);
-                    var image = src.ToImage<Bgr, Byte>();
+                    CvInvoke.Rectangle(Source, r, new MCvScalar(0, 0, 255), 0);
+                    var image = Source.ToImage<Bgr, Byte>();
                     image.ROI = r;
                     var out_img = image.Copy();
                     possibleplates.Add(out_img);
@@ -150,7 +148,7 @@ namespace find_undercover_cop.Model.AI
                                 var letter = out_img;
                                 letter.ROI = br;
                                 var out_letter = letter.Copy();
-                                //letters.Add(out_letter.ToBitmap<Bgr, byte>());
+                                letters.Add(out_letter.ToBitmap<Bgr, byte>());
                             }
                         }
                     }

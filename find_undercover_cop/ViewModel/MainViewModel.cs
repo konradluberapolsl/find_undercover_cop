@@ -1,5 +1,6 @@
 ﻿
 using find_undercover_cop.Model;
+using find_undercover_cop.Model.AI;
 using find_undercover_cop.Model.AI.NeutralNetwork;
 using find_undercover_cop.ViewModel.BaseClass;
 using Microsoft.Win32;
@@ -207,13 +208,13 @@ namespace find_undercover_cop.ViewModel
             //
             //detekcja
             //
-
+            Console.WriteLine(path);
+            Detection detection = new Detection(path);
 
             //detekcja(path)
             //
             // temp solution before detection - w kazdym razie zwracasz mi tutaj tablice bitmap
-            int charsCount = 7;
-            Bitmap[] charBitmaps = new Bitmap[charsCount];
+            List<Bitmap> charBitmaps = detection.Letters;
 
 
             //
@@ -221,6 +222,10 @@ namespace find_undercover_cop.ViewModel
             //
 
             string charsFromPicture = null;
+            foreach(var letter in charBitmaps)
+            {
+                charsFromPicture += recognition.Recognize(letter);
+            }
             //for (int i = 0; i < charsCount; i++)
             //{
             //    //cos w tym stylu
