@@ -13,10 +13,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace find_undercover_cop.ViewModel
 {
-    class MainViewModel : ViewModelBase
+    class MainViewModel: ViewModelBase
     {
         #region Fields
 
@@ -68,6 +70,17 @@ namespace find_undercover_cop.ViewModel
             {
                 isItCopStatement = value;
                 onPropertyChanged(nameof(isItCopStatement));
+            }
+        }
+
+        private ImageSource imagePreview;
+        public ImageSource ImagePreview
+        {
+            get => imagePreview;
+            set
+            {
+                imagePreview = value;
+                onPropertyChanged(nameof(imagePreview));
             }
         }
 
@@ -160,6 +173,7 @@ namespace find_undercover_cop.ViewModel
                         CurrentLicensePlate = null;
                         FilePath = null;
                         IsItCopStatement = null;
+                        ImagePreview = null;
                     }, canExecute => FilePath != null);
                     //}, canExecute => CurrentLicensePlate != null && FilePath != null);
                 }
@@ -168,27 +182,12 @@ namespace find_undercover_cop.ViewModel
         }
 
         #endregion
-        //system przechowywania informacji
+
         #region Methods
 
         public void LoadFileDialog()
         {
-            //
-            //temporary solution 
-            //with get it from txt 
-            //until we will have AI which get it from JPG
-            //
-            //
-            //...........................
-            //
 
-            //
-            //tutaj trzeba wpierdolic AI
-            //
-
-            //..........................
-            //
-            //
             IsItCopStatement = "";
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
@@ -205,40 +204,35 @@ namespace find_undercover_cop.ViewModel
 
         public void DetectAndRecognizeLetters(string path)
         {
+
+            Console.WriteLine(path);
+
+            //podglad
+            ImagePreview = new BitmapImage(new Uri(path));
+
             //
             //detekcja
             //
-            Console.WriteLine(path);
             Detection detection = new Detection(path);
-
-            //detekcja(path)
-            //
-            // temp solution before detection - w kazdym razie zwracasz mi tutaj tablice bitmap
             List<Bitmap> charBitmaps = detection.Letters;
 
 
             //
             //rozpoznanie znakow i dodawanie ich do stringa 
             //
-
             string charsFromPicture = null;
-            foreach(var letter in charBitmaps)
+            charBitmaps.Reverse();
+            foreach (var letter in charBitmaps)
             {
                 charsFromPicture += recognition.Recognize(letter);
                 Console.WriteLine(recognition.Recognize(letter));
             }
-            //for (int i = 0; i < charsCount; i++)
-            //{
-            //    //cos w tym stylu
-            //    charsFromPicture += recognition.Recognize(charBitmaps[i]);
-            //}
-            //Bitmap testBitmap = new Bitmap(path);
-           // charsFromPicture += recognition.Recognize(testBitmap);
 
             //
             //konstruktor tablicy i wkladamy do niego stringa
             //
             CurrentLicensePlate = new LicensePlate(charsFromPicture);
+
         }
     }
     #endregion

@@ -100,7 +100,7 @@ namespace find_undercover_cop.Model.AI
                 if (!r.IntersectsWith(last))
                 {
                     n++;
-                    CvInvoke.Rectangle(Source, r, new MCvScalar(0, 0, 255), 0);
+                    //CvInvoke.Rectangle(Source, r, new MCvScalar(0, 0, 255), 0);
                     var image = Source.ToImage<Bgr, Byte>();
                     image.ROI = r;
                     var out_img = image.Copy();
@@ -126,7 +126,7 @@ namespace find_undercover_cop.Model.AI
                     if (ar > 4.2 && ar < 5.5 && brect.Width > 200)
                     {
 
-                        CvInvoke.Rectangle(item, brect, new MCvScalar(0, 0, 255), 0);
+                        //CvInvoke.Rectangle(item, brect, new MCvScalar(0, 0, 255), 0);
                         var image = item;
                         image.ROI = brect;
                         var out_img = image.Copy();
@@ -144,7 +144,7 @@ namespace find_undercover_cop.Model.AI
                             double a = (double)br.Width / (double)br.Height;
                             if (a < 0.8 && br.Height < 60 && br.Height > 25)
                             {
-                                CvInvoke.Rectangle(out_img, br, new MCvScalar(0, 0, 255), 0);
+                                //CvInvoke.Rectangle(out_img, br, new MCvScalar(0, 0, 255), 0);
                                 var letter = out_img;
                                 letter.ROI = br;
                                 var out_letter = letter.Copy();

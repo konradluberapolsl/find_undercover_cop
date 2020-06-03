@@ -36,7 +36,7 @@ namespace find_undercover_cop.Model.AI.NeutralNetwork
         {
             //generate training patterns
             trainingPatterns = CreateTrainingPatternsFromDatabase();
-            Console.WriteLine("-----generate trai-----------");
+            Console.WriteLine("-----------------------------GTP-----------------------------");
 
             //create the network object
             backpropNetwork = new OCRNetwork(owner, new int[3] { aMatrixDim * aMatrixDim, ((aMatrixDim * aMatrixDim) + charsCount) / 2, charsCount });
@@ -49,6 +49,11 @@ namespace find_undercover_cop.Model.AI.NeutralNetwork
             Console.WriteLine("-----------------------------TTN-----------------------------");
             //or
             //backpropNetwork.LoadFromFile(...........nazwapliku................);
+
+            //save nn
+            Console.WriteLine("-----------------------------SN-----------------------------");
+            backpropNetwork.SaveToFile("nn.neuro");
+
         }
 
         #endregion
@@ -169,7 +174,6 @@ namespace find_undercover_cop.Model.AI.NeutralNetwork
             //testing
             double[] aInput = BitmapToDoubleArray(bmp, aMatrixDim);
             s = Testing(aInput);
-            Console.WriteLine("-----------------------------Testing-----------------------------");
 
             return s;
         }

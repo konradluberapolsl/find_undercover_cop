@@ -28,13 +28,14 @@ namespace find_undercover_cop.Model
 
         public LicensePlate(string fullLicensePlate)
         {
+            //tu to trzeba bedzie naprawic jak cos zadziala
             FullLicensePlate = fullLicensePlate;
 
             LocationShortcut = FullLicensePlate;
             LocationFullName = LocationShortcutToLocationFullName(LocationShortcut);
             LocationVoivodeship = LocationShortcutToLocationVoivodeship(LocationShortcut);
 
-            RandomCharacters = FullLicensePlate.Substring(3).Trim();
+            RandomCharacters = FullLicensePlate;
 
             isUndercoverCop = CheckIfItsCop(FullLicensePlate);
         }
