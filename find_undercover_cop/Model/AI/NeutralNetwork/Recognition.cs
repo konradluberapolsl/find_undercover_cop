@@ -69,7 +69,7 @@ namespace find_undercover_cop.Model.AI.NeutralNetwork
             //
             for (var i = 0; i < letterCount; i++)
             {
-                string path = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), @"..\..\..\database\smpl\")) + Convert.ToChar(firstLetter + i) + "_binary\\0.png";
+                string path = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), @"..\..\..\database\smpl\")) + Convert.ToChar(firstLetter + i) + "_binary\\0.jpg";
                 Console.WriteLine(i + ". " + path);
                 var aBitMatrix = BitmapToDoubleArray(new Bitmap(path), aMatrixDim);
 
@@ -103,7 +103,8 @@ namespace find_undercover_cop.Model.AI.NeutralNetwork
         {
             var result = new double[aArrayDim * aArrayDim];
 
-            var bmp = Graphics.FromImage(aSrc);
+            Bitmap bt = new Bitmap(aSrc.Width, aSrc.Height);
+            var bmp = Graphics.FromImage(bt);
             bmp.SmoothingMode = SmoothingMode.None;
             bmp.InterpolationMode = InterpolationMode.NearestNeighbor;
 

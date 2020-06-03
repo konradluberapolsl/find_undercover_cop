@@ -153,6 +153,7 @@ namespace find_undercover_cop.Model.AI
                                 CvInvoke.AdaptiveThreshold(gray_letter, binary_letter, 255, AdaptiveThresholdType.GaussianC, ThresholdType.Binary, 55, 5);
                                 Image<Bgr, byte> o = binary_letter.Convert<Bgr, byte>();
                                 //letters.Add(binary_letter.ToBitmap<Gray, byte>());
+                                o.Resize(30, 45, Emgu.CV.CvEnum.Inter.Lanczos4);
                                 letters.Add(o.ToBitmap<Bgr, byte>());
                             }
                         }
