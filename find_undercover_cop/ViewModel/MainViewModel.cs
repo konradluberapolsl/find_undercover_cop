@@ -1,7 +1,7 @@
 ﻿
 using find_undercover_cop.Model;
 using find_undercover_cop.Model.AI;
-using find_undercover_cop.Model.AI.NeutralNetwork;
+
 using find_undercover_cop.ViewModel.BaseClass;
 using Microsoft.Win32;
 using System;
@@ -22,7 +22,6 @@ namespace find_undercover_cop.ViewModel
     {
         #region Fields
 
-        private Recognition recognition = new Recognition();
 
         private LicensePlate currentLicensePlate;
         private string fullLicensePlate;
@@ -73,16 +72,28 @@ namespace find_undercover_cop.ViewModel
             }
         }
 
-        private ImageSource imagePreview;
-        public ImageSource ImagePreview
+        private ImageSource imageIn;
+        public ImageSource ImageIn
         {
-            get => imagePreview;
+            get => imageIn;
             set
             {
-                imagePreview = value;
-                onPropertyChanged(nameof(imagePreview));
+                imageIn = value;
+                onPropertyChanged(nameof(imageIn));
             }
         }
+
+        private ImageSource imageOut;
+        public ImageSource ImageOut
+        {
+            get => imageOut;
+            set
+            {
+                imageOut = value;
+                onPropertyChanged(nameof(imageOut));
+            }
+        }
+
 
         #endregion
 
@@ -100,23 +111,6 @@ namespace find_undercover_cop.ViewModel
         #endregion
 
         #region Commands
-
-        //load by d&d TUTAJ BĘDZIE TRZEBA POKOMBINOWAĆ
-        private ICommand loadFileByDragAndDrop;
-        public ICommand LoadFileByDragAndDrop
-        {
-            get
-            {
-                if (loadFileByDragAndDrop == null)
-                {
-                    loadFileByDragAndDrop = new RelayCommand(execute =>
-                    {
-                        //no tutaj będzie problem bo przeceiż jest ten argument, trzeba bedzie ogarnac to dependency najprawdopodobniej
-                    }, canExecute => true);
-                }
-                return loadFileByDragAndDrop;
-            }
-        }
 
         //load by button
         private ICommand loadFileByButton;
@@ -173,7 +167,8 @@ namespace find_undercover_cop.ViewModel
                         CurrentLicensePlate = null;
                         FilePath = null;
                         IsItCopStatement = null;
-                        ImagePreview = null;
+                        ImageIn = null;
+                        ImageOut = null;
                     }, canExecute => FilePath != null);
                     //}, canExecute => CurrentLicensePlate != null && FilePath != null);
                 }
@@ -208,30 +203,16 @@ namespace find_undercover_cop.ViewModel
             Console.WriteLine(path);
 
             //podglad
-            ImagePreview = new BitmapImage(new Uri(path));
+            ImageIn = new BitmapImage(new Uri(path));
+            ImageOut = new BitmapImage();
+
 
             //
             //detekcja
             //
-            Detection detection = new Detection(path);
-            List<Bitmap> charBitmaps = detection.Letters;
+            //Detection detection = new Detection(path);
 
-
-            //
-            //rozpoznanie znakow i dodawanie ich do stringa 
-            //
-            string charsFromPicture = null;
-            charBitmaps.Reverse();
-            foreach (var letter in charBitmaps)
-            {
-                charsFromPicture += recognition.Recognize(letter);
-                Console.WriteLine(recognition.Recognize(letter));
-            }
-
-            //
-            //konstruktor tablicy i wkladamy do niego stringa
-            //
-            CurrentLicensePlate = new LicensePlate(charsFromPicture);
+            //CurrentLicensePlate = new LicensePlate(charsFromPicture);
 
         }
     }
