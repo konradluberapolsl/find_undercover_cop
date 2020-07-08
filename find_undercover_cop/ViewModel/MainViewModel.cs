@@ -15,6 +15,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Convert = find_undercover_cop.Model.Convert;
 
 namespace find_undercover_cop.ViewModel
 {
@@ -204,15 +205,23 @@ namespace find_undercover_cop.ViewModel
 
             //podglad
             ImageIn = new BitmapImage(new Uri(path));
-            ImageOut = new BitmapImage();
 
 
             //
             //detekcja
             //
-            //Detection detection = new Detection(path);
 
-            //CurrentLicensePlate = new LicensePlate(charsFromPicture);
+            Detection detection = new Detection(path);
+
+            Bitmap image = detection.ConvertOutImgToBitmap();
+
+            ImageOut = Convert.ToImageSource(image);
+
+            Recognition recognition = new Recognition(image);
+
+            CurrentLicensePlate = new LicensePlate(recognition.Text);
+
+            Console.WriteLine(recognition.Text);
 
         }
     }
