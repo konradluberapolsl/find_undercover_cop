@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using System.Windows.Media;
 
 namespace find_undercover_cop.Model
 {
@@ -7,20 +9,69 @@ namespace find_undercover_cop.Model
     {
         #region Properties
 
-        public string FullLicensePlate { get; set; }
+        private string fullLicensePlate;
+        public string FullLicensePlate
+        {
+            get => fullLicensePlate;
+            private set
+            {
+                fullLicensePlate = value;
+            }
+        }
 
         //pierwsza czesc tablicy rej
-        public string LocationShortcut { get; set; }
+        private string locationShortcut;
+        public string LocationShortcut 
+        { get => locationShortcut;
+          private set
+          {
+                locationShortcut = value;
+          }
+        }
+
+
         //miasto lub powiat
-        public string LocationFullName { get; set; }
+        private string locationFullName;
+        public string LocationFullName
+        {
+            get =>  locationFullName;
+            private set
+            {
+                locationFullName = value;
+            }
+        }
         //wojewodztwo
-        public string LocationVoivodeship { get; set; }
+        private string locationVoivodeship;
+        public string LocationVoivodeship
+        {
+            get => locationVoivodeship;
+            private set
+            {
+                locationVoivodeship = value;
+            }
+        }
 
         //druga czesc tablicy rej
-        public string RandomCharacters { get; set; }
+        private string randomCharacters;
+        public string RandomCharacters
+        {
+            get => randomCharacters;
+            private set
+            {
+                randomCharacters = value;
+            }
+        }
 
         //czy jest gliniarzem
-        public bool isUndercoverCop { get; set; }
+        private bool isUndercoverCop;
+        public bool IsUndercoverCop
+        {
+            get => isUndercoverCop;
+            private set
+            {
+                isUndercoverCop = value;
+            }
+        }
 
         #endregion
 
@@ -30,21 +81,49 @@ namespace find_undercover_cop.Model
         {
             //tu to trzeba bedzie naprawic jak cos zadziala
             FullLicensePlate = fullLicensePlate;
+            GetLocatioShortcutAndRandomLetter();
+            CheckIfItsCop();
+            //Console.WriteLine(locationShortcut) ;
+            //Console.WriteLine(LocationFullName);
+            //Console.WriteLine(LocationVoivodeship);
+            //Console.WriteLine(RandomCharacters);
 
-            LocationShortcut = FullLicensePlate;
-            LocationFullName = LocationShortcutToLocationFullName(LocationShortcut);
-            LocationVoivodeship = LocationShortcutToLocationVoivodeship(LocationShortcut);
 
-            RandomCharacters = FullLicensePlate;
-
-            isUndercoverCop = CheckIfItsCop(FullLicensePlate);
         }
 
         #endregion
 
         #region Methods
 
-        public string LocationShortcutToLocationFullName(string shortcut)
+        private void GetLocatioShortcutAndRandomLetter()
+        {
+            string tmp = fullLicensePlate.ToUpper();
+            if (tmp.Length == 7)
+            {
+                string shortcut = tmp.Substring(0, 3);
+                if (!int.TryParse(shortcut, out _) && !int.TryParse(tmp[2].ToString(), out _))
+                {
+                    LocationShortcut = shortcut;
+                    LocationFullName = LocationShortcutToLocationFullName(shortcut);
+                    LocationVoivodeship = LocationShortcutToLocationVoivodeship(shortcut);
+                    RandomCharacters = tmp.Substring(3);
+                    return;
+                }
+                shortcut = tmp.Substring(0, 2);
+                if (!int.TryParse(shortcut, out _))
+                {
+                    LocationShortcut = shortcut;
+                    LocationFullName = LocationShortcutToLocationFullName(shortcut);
+                    LocationVoivodeship = LocationShortcutToLocationVoivodeship(shortcut);
+                    RandomCharacters = tmp.Substring(2);
+                }
+            }
+        }
+        
+
+
+
+        private string LocationShortcutToLocationFullName(string shortcut)
         {
             string fullName = null;
             string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\database\list_of_markings.txt"));
@@ -60,7 +139,7 @@ namespace find_undercover_cop.Model
 
             return fullName;
         }
-        public string LocationShortcutToLocationVoivodeship(string shortcut)
+        private string LocationShortcutToLocationVoivodeship(string shortcut)
         {
             string voivodeship = null;
             string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\database\list_of_markings.txt"));
@@ -76,18 +155,17 @@ namespace find_undercover_cop.Model
 
             return voivodeship;
         }
-        public bool CheckIfItsCop(string licensePlate)
+        private void CheckIfItsCop()
         {
             string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\database\police_cars.txt"));
             string[][] policeCars = ReadDatabase(path);
             for (int i = 0; i < policeCars.Length; i++)
             {
-                if (policeCars[i][0] == licensePlate)
+                if (policeCars[i][0] == fullLicensePlate)
                 {
-                    return true;
+                    isUndercoverCop = true;
                 }
             }
-            return false;
         }
         public string GetCopCar(string licensePlate)
         {
@@ -103,7 +181,7 @@ namespace find_undercover_cop.Model
             }
             return copCar;
         }
-        public string[][] ReadDatabase(string path)
+        private string[][] ReadDatabase(string path)
         {
             string[] lines = File.ReadAllLines(path);
             string[][] data = new string[lines.Length][];

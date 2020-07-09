@@ -132,6 +132,9 @@
   <data name="LaberOr" xml:space="preserve">
     <value>lub</value>
   </data>
+  <data name="SomethingWentWrong" xml:space="preserve">
+    <value>Coś poszło nie tak!</value>
+  </data>
   <data name="TextBoxDragAndDropFile" xml:space="preserve">
     <value>Wrzuć plik tutaj</value>
   </data>

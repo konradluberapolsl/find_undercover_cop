@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Tesseract;
 
@@ -29,7 +30,10 @@ namespace find_undercover_cop.Model
         private void Read(Bitmap image)
         {
             processed = ocr.Process(image);
-            Text = processed.GetText().Replace(" ", "").Replace("\n","");
+            Text = processed.GetText();
+            Regex pattern = new Regex(@"[^0-9a-zA-Z]+");
+            Text = pattern.Replace(Text, "");
+   
         }
     }
 }

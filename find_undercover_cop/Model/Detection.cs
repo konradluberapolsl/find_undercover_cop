@@ -153,7 +153,7 @@ namespace find_undercover_cop.Model.AI
             foreach (var item in possibleAreas)
             {
                 Console.WriteLine(item.Capacity);
-                Rectangle r = new Rectangle(item[0].X - 200, item[0].Y - 50, 375, 150);
+                Rectangle r = new Rectangle(item[0].X - 200, item[0].Y - 50, 375, 100);
                 if (!r.IntersectsWith(last))
                 {
                     n++;
@@ -183,21 +183,8 @@ namespace find_undercover_cop.Model.AI
         public void DeSkew()
         {
             Image<Gray, byte> image = OutImage.Convert<Gray, Byte>();
-            //int height = tmp.Width;
-            //int width = tmp.Height;
-
-            //Image<Gray, byte> tmp_dn = null;
-            //CvInvoke.FastNlMeansDenoising(tmp, tmp_dn);
-
-            //Image<Gray, byte> tmp_bw = null;
-            //CvInvoke.Threshold(tmp_dn, tmp_bw, 0, 255, ThresholdType.BinaryInv | ThresholdType.Otsu);
-
-            //Image<Gray, byte> lines = null;
-            //CvInvoke.HoughLines(tmp_bw, lines, width / 12, width / 150, 180); //sprawdzić trsh
-
             double cannyThreshold = 180;
             double cannyThresholdLinking = 120;
-            Gray circleAccumulatorThreshold = new Gray(500);
             Image<Gray, Byte> cannyEdges = image.Canny(cannyThreshold, cannyThresholdLinking);
             LineSegment2D[] lines = cannyEdges.HoughLinesBinary(
             1, //Distance resolution in pixel-related units

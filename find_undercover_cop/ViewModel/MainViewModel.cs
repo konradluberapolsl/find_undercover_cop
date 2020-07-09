@@ -29,6 +29,7 @@ namespace find_undercover_cop.ViewModel
 
         private string filePath;
         private string isItCopStatement;
+        private string locationName;
 
         #endregion
 
@@ -72,6 +73,17 @@ namespace find_undercover_cop.ViewModel
                 onPropertyChanged(nameof(isItCopStatement));
             }
         }
+
+        public string LocationName
+        {
+            get => locationName;
+            set
+            {
+                locationName = value;
+                onPropertyChanged(nameof(locationName));
+            }
+        }
+
 
         private ImageSource imageIn;
         public ImageSource ImageIn
@@ -131,27 +143,31 @@ namespace find_undercover_cop.ViewModel
         }
 
         //check if its cop
-        private ICommand checkIfItsCop;
-        public ICommand CheckIfItsCop
+        private ICommand checkLicensePlate;
+        public ICommand CheckLicensPlate
         {
             get
             {
-                if (checkIfItsCop == null)
+                if (checkLicensePlate == null)
                 {
-                    checkIfItsCop = new RelayCommand(execute =>
+                    checkLicensePlate = new RelayCommand(execute =>
                     {
-                        if (CurrentLicensePlate.isUndercoverCop)
+                        if (CurrentLicensePlate.IsUndercoverCop)
                         {
                             //napraw bo nie pokazuje jakim autem jeździ gliniarz
-                            IsItCopStatement = $"To gliniarz \n{CurrentLicensePlate.GetCopCar(CurrentLicensePlate.FullLicensePlate)}";
+                            IsItCopStatement = $"To gliniarz \n{CurrentLicensePlate.GetCopCar(CurrentLicensePlate.FullLicensePlate)}!";
                         }
                         else
                         {
-                            IsItCopStatement = "To nie gliniarz";
+                            IsItCopStatement = "Masz szczęście, to nie gliniarz!";
                         }
+
+                        LocationName = $"Województow: {CurrentLicensePlate.LocationVoivodeship} \nPowiat: {CurrentLicensePlate.LocationFullName}";
+
+
                     }, canExecute => CurrentLicensePlate != null);
                 }
-                return checkIfItsCop;
+                return checkLicensePlate;
             }
         }
 
@@ -168,6 +184,7 @@ namespace find_undercover_cop.ViewModel
                         CurrentLicensePlate = null;
                         FilePath = null;
                         IsItCopStatement = null;
+                        LocationName = null;
                         ImageIn = null;
                         ImageOut = null;
                     }, canExecute => FilePath != null);
@@ -185,6 +202,7 @@ namespace find_undercover_cop.ViewModel
         {
 
             IsItCopStatement = "";
+            LocationName = "";
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
             if (openFileDialog.ShowDialog() == true)
@@ -210,18 +228,26 @@ namespace find_undercover_cop.ViewModel
             //
             //detekcja
             //
+            try
+            {
+                Detection detection = new Detection(path);
 
-            Detection detection = new Detection(path);
+                Bitmap image = detection.ConvertOutImgToBitmap();
 
-            Bitmap image = detection.ConvertOutImgToBitmap();
+                ImageOut = Convert.ToImageSource(image);
 
-            ImageOut = Convert.ToImageSource(image);
+                Recognition recognition = new Recognition(image);
 
-            Recognition recognition = new Recognition(image);
+                CurrentLicensePlate = new LicensePlate(recognition.Text);
 
-            CurrentLicensePlate = new LicensePlate(recognition.Text);
+                Console.WriteLine(recognition.Text);
+            }
+            catch (Exception e)
+            {
 
-            Console.WriteLine(recognition.Text);
+                MessageBox.Show(Resources.Resources.SomethingWentWrong);
+            }
+
 
         }
     }
