@@ -15,7 +15,6 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Convert = find_undercover_cop.Model.Convert;
 
 namespace find_undercover_cop.ViewModel
 {
@@ -234,13 +233,14 @@ namespace find_undercover_cop.ViewModel
 
                 Bitmap image = detection.ConvertOutImgToBitmap();
 
-                ImageOut = Convert.ToImageSource(image);
+                ImageOut = Converters.ToImageSource(image);
 
                 Recognition recognition = new Recognition(image);
 
                 CurrentLicensePlate = new LicensePlate(recognition.Text);
 
-                Console.WriteLine(recognition.Text);
+                Serialization.Save(ref currentLicensePlate, Converters.ConvertImageToBase64(image));
+
             }
             catch (Exception e)
             {

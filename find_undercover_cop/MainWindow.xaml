@@ -38,7 +38,8 @@
                 <TextBlock Text="{Binding Source={x:Static resx:Resources.Title}}"
                            Foreground="White"
                            FontSize="30"
-                           FontFamily="MV Boli"
+                           FontFamily="Impact"
+                           FontWeight="Regular"
                            VerticalAlignment="Center"
                            Margin="25 0"/>
             </StackPanel>

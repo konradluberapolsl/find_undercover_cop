@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ButtonCheck" xml:space="preserve">
-    <value>Check if it's a cop!</value>
+    <value>Check car!</value>
   </data>
   <data name="ButtonUploadFile" xml:space="preserve">
     <value>Click here</value>
   </data>
   <data name="LabelLicensePlate" xml:space="preserve">
-    <value>Tablica rejestracyjna</value>
+    <value>License Plate</value>
   </data>
   <data name="LabelUploadFile" xml:space="preserve">
     <value>Upload file</value>

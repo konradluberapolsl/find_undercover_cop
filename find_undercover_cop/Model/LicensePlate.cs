@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Media;
@@ -73,12 +74,14 @@ namespace find_undercover_cop.Model
             }
         }
 
+
         #endregion
 
         #region Ctor
 
         public LicensePlate(string fullLicensePlate)
         {
+            
             //tu to trzeba bedzie naprawic jak cos zadziala
             FullLicensePlate = fullLicensePlate;
             GetLocatioShortcutAndRandomLetter();
@@ -101,6 +104,7 @@ namespace find_undercover_cop.Model
             if (tmp.Length == 7)
             {
                 string shortcut = tmp.Substring(0, 3);
+                Console.WriteLine(tmp[2].ToString());
                 if (!int.TryParse(shortcut, out _) && !int.TryParse(tmp[2].ToString(), out _))
                 {
                     LocationShortcut = shortcut;
@@ -116,6 +120,20 @@ namespace find_undercover_cop.Model
                     LocationFullName = LocationShortcutToLocationFullName(shortcut);
                     LocationVoivodeship = LocationShortcutToLocationVoivodeship(shortcut);
                     RandomCharacters = tmp.Substring(2);
+                }
+            }
+            else if (tmp.Length == 8)
+            {
+                string shortcut = tmp.Substring(0, 3);
+                Console.WriteLine(tmp[2].ToString());
+                if (!int.TryParse(shortcut, out _) && !int.TryParse(tmp[2].ToString(), out _))
+                {
+                    Console.WriteLine("chjuj");
+                    LocationShortcut = shortcut;
+                    LocationFullName = LocationShortcutToLocationFullName(shortcut);
+                    LocationVoivodeship = LocationShortcutToLocationVoivodeship(shortcut);
+                    RandomCharacters = tmp.Substring(3);
+                    return;
                 }
             }
         }

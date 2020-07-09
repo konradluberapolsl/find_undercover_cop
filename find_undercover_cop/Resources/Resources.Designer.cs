@@ -61,7 +61,7 @@ namespace find_undercover_cop.Resources {
         }
         
         /// <summary>
-        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Check if it&apos;s a cop!.
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Check car!.
         /// </summary>
         public static string ButtonCheck {
             get {
@@ -79,7 +79,7 @@ namespace find_undercover_cop.Resources {
         }
         
         /// <summary>
-        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Tablica rejestracyjna.
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu License Plate.
         /// </summary>
         public static string LabelLicensePlate {
             get {
