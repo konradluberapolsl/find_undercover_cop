@@ -82,7 +82,6 @@ namespace find_undercover_cop.Model
         public LicensePlate(string fullLicensePlate)
         {
             
-            //tu to trzeba bedzie naprawic jak cos zadziala
             FullLicensePlate = fullLicensePlate;
             GetLocatioShortcutAndRandomLetter();
             CheckIfItsCop();
@@ -128,7 +127,6 @@ namespace find_undercover_cop.Model
                 Console.WriteLine(tmp[2].ToString());
                 if (!int.TryParse(shortcut, out _) && !int.TryParse(tmp[2].ToString(), out _))
                 {
-                    Console.WriteLine("chjuj");
                     LocationShortcut = shortcut;
                     LocationFullName = LocationShortcutToLocationFullName(shortcut);
                     LocationVoivodeship = LocationShortcutToLocationVoivodeship(shortcut);
