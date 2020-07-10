@@ -12,7 +12,7 @@ namespace find_undercover_cop.Model
 {
     static class Converters
     {
-        public static BitmapImage ToImageSource (Bitmap bitmap)
+        public static BitmapImage ToImageSource (Bitmap bitmap)  //Konwertuj Bitmape do ImageSource
         {
             using (MemoryStream memory = new MemoryStream())
             {
@@ -28,7 +28,7 @@ namespace find_undercover_cop.Model
             }
         }
 
-        public static string ConvertImageToBase64(Bitmap image)
+        public static string ConvertImageToBase64(Bitmap image) // Konwertuje Bitmape do strina Base64
         {
             using (MemoryStream memory = new MemoryStream())
             {

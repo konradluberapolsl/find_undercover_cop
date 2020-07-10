@@ -15,10 +15,10 @@ namespace find_undercover_cop.Model.AI
     class Detection
     {
         #region Fields  
-        private Mat source = new Mat();
-        private Dictionary<int, Rectangle> possibleContours = new Dictionary<int, Rectangle>();
-        private List<List<Rectangle>> possibleAreas = new List<List<Rectangle>>();
-        private Mat gray = new Mat();
+        private Mat source = new Mat(); //Obraz wejściowt
+        private Dictionary<int, Rectangle> possibleContours = new Dictionary<int, Rectangle>(); //Lista kontur
+        private List<List<Rectangle>> possibleAreas = new List<List<Rectangle>>(); //Lista rejonów
+        private Mat gray = new Mat(); //Obraz w skali szarości 
         public Mat Gray
         {
             get => gray;
@@ -27,7 +27,7 @@ namespace find_undercover_cop.Model.AI
                 gray = value;
             }
         }
-        private Image<Bgr, byte> outImage = null;
+        private Image<Bgr, byte> outImage = null; //Obraz wyjściowy
         public Image<Bgr,byte> OutImage
         {
             get => outImage;
@@ -35,9 +35,9 @@ namespace find_undercover_cop.Model.AI
             {
                 outImage = value;
             }
-        }
+        } 
 
-        private Mat binary =  new Mat();
+        private Mat binary =  new Mat(); //Obraz Binarny
         public Mat Binary
         {
             get => binary;
@@ -47,7 +47,7 @@ namespace find_undercover_cop.Model.AI
             }
         }
 
-        private Mat middle = new Mat();
+        private Mat middle = new Mat(); //Obraz z nałożonymi filtrami 
         public Mat Middle
         {
             get => middle;
@@ -61,12 +61,15 @@ namespace find_undercover_cop.Model.AI
         #region Ctor
         public Detection(string path)
         {
-            source = CvInvoke.Imread(path, Emgu.CV.CvEnum.ImreadModes.AnyColor);
-            ConvertToGrey();
-            ConvertToBinary();
-            FindPossibleAreas();
-            FindROI();
-            DeSkew();
+
+                source = CvInvoke.Imread(path, Emgu.CV.CvEnum.ImreadModes.AnyColor); //Wczytanie obrazu
+                ConvertToGrey(); //Metoda odpowiadająca za konwersję do skali szarości 
+                ConvertToBinary(); //Metoda odpowiadająca za konwersję do obrazu binarnego 
+                FindPossibleAreas(); //Funkcja znajdująca możliwe tablice 
+                FindROI(); //Funkcja wybierająca tablice 
+                DeSkew(); //Funkca odpowiadjąca za prostowanie obrazu 
+            
+
         }
         #endregion
 
@@ -172,46 +175,44 @@ namespace find_undercover_cop.Model.AI
 
         public Bitmap ConvertOutImgToBitmap()
         {
+            
             Image<Bgr, byte> tmp = OutImage;
-            //CvInvoke.FastNlMeansDenoising(OutImage, tmp);
-            CvInvoke.MedianBlur(OutImage, tmp, 3);
-            //CvInvoke.GaussianBlur(OutImage, tmp, new Size(5, 5), 1.5);
+            if (outImage != null)
+            {
+                //CvInvoke.FastNlMeansDenoising(OutImage, tmp);
+                CvInvoke.MedianBlur(OutImage, tmp, 3);
+                //CvInvoke.GaussianBlur(OutImage, tmp, new Size(5, 5), 1.5);
 
-            return tmp.ToBitmap();
+                return tmp.ToBitmap();
+            }
+            else
+                return new Bitmap(100, 100);
         }
 
         public void DeSkew()
         {
-            Image<Gray, byte> image = OutImage.Convert<Gray, Byte>();
-            double cannyThreshold = 180;
-            double cannyThresholdLinking = 120;
-            Image<Gray, Byte> cannyEdges = image.Canny(cannyThreshold, cannyThresholdLinking);
-            LineSegment2D[] lines = cannyEdges.HoughLinesBinary(
-            1, //Distance resolution in pixel-related units
-            Math.PI / 180, //Angle resolution measured in radians. ******
-            100, //threshold
-            outImage.Width/12, //min Line width
-            outImage.Width / 150 //gap between lines
-            )[0]; //Get the lines from the first channel
-            double[] angle = new double[lines.Length];
-
-            for (int i = 0; i < lines.Length; i++)
+            if (outImage != null)
             {
-                double result = (double)(lines[i].P2.Y - lines[i].P1.Y) / (lines[i].P2.X - lines[i].P1.X);
-                angle[i] = Math.Atan(result) * 57.2957795;
-            }
-            double avg = 0;
-            for (int i = 0; i < lines.Length; i++)
-            {
-                avg += angle[i];
-            }
-            avg /= lines.Length;
-            Console.WriteLine(avg);
-            //Gray g = new Gray(255);
-            //Image<Gray, byte> imageRotate = image.Rotate(-avg, g);
-            outImage = outImage.Rotate(-avg, new Bgr(0,0,0));
-           
+                Image<Gray, byte> image = OutImage.Convert<Gray, Byte>();
+                double cannyThreshold = 180;
+                double cannyThresholdLinking = 120;
+                Image<Gray, Byte> cannyEdges = image.Canny(cannyThreshold, cannyThresholdLinking);
+                LineSegment2D[] lines = cannyEdges.HoughLinesBinary(1, Math.PI / 180, 100, outImage.Width / 12,outImage.Width / 150 )[0]; 
+                double[] angle = new double[lines.Length];
 
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    double result = (double)(lines[i].P2.Y - lines[i].P1.Y) / (lines[i].P2.X - lines[i].P1.X);
+                    angle[i] = Math.Atan(result) * 57.2957795;
+                }
+                double avg = 0;
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    avg += angle[i];
+                }
+                avg /= lines.Length;
+                outImage = outImage.Rotate(-avg, new Bgr(0, 0, 0));
+            }
         }
         #endregion
     }

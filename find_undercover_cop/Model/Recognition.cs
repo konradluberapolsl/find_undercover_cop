@@ -11,23 +11,25 @@ namespace find_undercover_cop.Model
 {
     class Recognition
     {
-        private TesseractEngine ocr;
-        private Page processed;
-        private string text;
+        private TesseractEngine ocr; // Silnik Tesseract
+        private Page processed; 
+        private string text; //Wynikowy tekst
         public string Text
         {
             get => text;
             private set { text = value; }
         }
+
+
         public Recognition(Bitmap image)
         {
-            Bitmap new_dpi = new Bitmap(image);
-            new_dpi.SetResolution(300, 300);
-            ocr = new TesseractEngine("./tessdata", "eng", EngineMode.TesseractAndCube);
+            Bitmap new_dpi = new Bitmap(image); 
+            new_dpi.SetResolution(300, 300); // Zwiększenie dpi obrazu 
+            ocr = new TesseractEngine("./tessdata", "eng", EngineMode.TesseractAndCube); //Inicajlizacja ocr
             Read(image);
         }
 
-        private void Read(Bitmap image)
+        private void Read(Bitmap image) //Odzczytanie znaków z obrazu
         {
             processed = ocr.Process(image);
             Text = processed.GetText();

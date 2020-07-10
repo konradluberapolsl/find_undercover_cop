@@ -218,35 +218,30 @@ namespace find_undercover_cop.ViewModel
         public void DetectAndRecognizeLetters(string path)
         {
 
-            Console.WriteLine(path);
+            //Console.WriteLine(path);
 
             //podglad
             ImageIn = new BitmapImage(new Uri(path));
 
-
-            //
+            
             //detekcja
-            //
-            try
-            {
-                Detection detection = new Detection(path);
 
-                Bitmap image = detection.ConvertOutImgToBitmap();
+            Detection detection = new Detection(path);
 
-                ImageOut = Converters.ToImageSource(image);
+            Bitmap image = detection.ConvertOutImgToBitmap();
 
-                Recognition recognition = new Recognition(image);
+            //Podgląd 
+            ImageOut = Converters.ToImageSource(image);
 
-                CurrentLicensePlate = new LicensePlate(recognition.Text);
+            //odczytanie zaków     
+            Recognition recognition = new Recognition(image);
 
-                Serialization.Save(ref currentLicensePlate, Converters.ConvertImageToBase64(image));
+            //Inicjalizacja obiktu tablicy 
+            CurrentLicensePlate = new LicensePlate(recognition.Text);
 
-            }
-            catch (Exception e)
-            {
+            //Serializacja
+            Serialization.Save(ref currentLicensePlate, Converters.ConvertImageToBase64(image));
 
-                MessageBox.Show(Resources.Resources.SomethingWentWrong);
-            }
 
 
         }
